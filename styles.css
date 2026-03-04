@@ -64,7 +64,7 @@ nav a:hover {
 .hero h1 {
     font-size: 42px;
     font-weight: 800;
-    color: #2D2D2D;
+    color: #DE4097;
     margin-bottom: 8px;
 }
 
@@ -111,7 +111,7 @@ nav a:hover {
     height: 110px;
     object-fit: cover;
     object-position: top center;
-    border-radius: 4px;
+    border-radius: 0;
 }
 
 .card-images.two-punks img:first-child {
@@ -123,7 +123,7 @@ nav a:hover {
     height: 130px;
     object-fit: cover;
     object-position: top center;
-    border-radius: 4px;
+    border-radius: 0;
 }
 
 .card-images.magnifier img {
@@ -134,7 +134,7 @@ nav a:hover {
 
 .card-content {
     background: #DE4097;
-    border-radius: 14px;
+    border-radius: 0;
     padding: 22px 20px;
     width: 100%;
     min-height: 130px;
