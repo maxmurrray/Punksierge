@@ -33,7 +33,7 @@ header {
 .logo-text {
     font-size: 28px;
     font-weight: 800;
-    color: #C74B8B;
+    color: #DE4097;
     letter-spacing: -0.5px;
 }
 
@@ -45,7 +45,7 @@ nav {
 nav a {
     font-size: 20px;
     font-weight: 500;
-    color: #C74B8B;
+    color: #DE4097;
     text-decoration: none;
 }
 
@@ -133,7 +133,7 @@ nav a:hover {
 }
 
 .card-content {
-    background: #C74B8B;
+    background: #DE4097;
     border-radius: 14px;
     padding: 22px 20px;
     width: 100%;
