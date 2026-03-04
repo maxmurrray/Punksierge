@@ -55,6 +55,13 @@ nav a {
 
 nav a:hover { opacity: 0.75; }
 
+.nav-phone {
+    font-size: 18px;
+    font-weight: 600;
+    color: #DE4097;
+    letter-spacing: 0.2px;
+}
+
 /* ── Hero ── */
 .hero {
     text-align: center;
@@ -99,51 +106,52 @@ nav a:hover { opacity: 0.75; }
     height: 256px;
 }
 
-/* ── Services ── */
-.services {
+/* ── About ── */
+.about-section {
     padding: 72px 60px 60px;
-    max-width: 1200px;
+    max-width: 800px;
     margin: 0 auto;
+    border-top: 1px solid #1e1e1e;
 }
 
-.cards {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
+.about-heading {
+    font-size: 48px;
+    font-weight: 800;
+    color: #DE4097;
+    margin-bottom: 40px;
 }
 
-.card {
-    flex: 1;
-    max-width: 380px;
+.about-content {
     display: flex;
     flex-direction: column;
+    gap: 22px;
 }
 
-.card-top {
-    background: #DE4097;
-    padding: 22px 26px;
+.about-lead {
+    font-size: 26px;
+    font-weight: 700;
+    color: #DE4097;
+    line-height: 1.2;
 }
 
-.card-top h3 {
-    font-size: 20px;
-    font-weight: 800;
-    color: #fff;
-    letter-spacing: 0.2px;
-}
-
-.card-body {
-    background: #161616;
-    padding: 22px 26px;
-    flex: 1;
-    border: 1px solid #2a2a2a;
-    border-top: none;
-}
-
-.card-body p {
-    font-size: 17px;
+.about-content p {
+    font-size: 19px;
     font-weight: 400;
-    color: #aaa;
-    line-height: 1.6;
+    color: #bbb;
+    line-height: 1.75;
+}
+
+.about-content strong {
+    color: #fff;
+    font-weight: 700;
+}
+
+.about-close {
+    font-size: 19px;
+    font-weight: 400;
+    color: #DE4097 !important;
+    line-height: 1.75;
+    font-style: italic;
 }
 
 /* ── Contact ── */
@@ -238,19 +246,21 @@ nav a:hover { opacity: 0.75; }
         height: 128px;
     }
 
-    .services {
+    .about-section {
         padding: 48px 20px 40px;
     }
 
-    .cards {
-        flex-direction: column;
-        align-items: center;
-        gap: 16px;
+    .about-heading {
+        font-size: 36px;
+        margin-bottom: 28px;
     }
 
-    .card {
-        max-width: 100%;
-        width: 100%;
+    .about-lead {
+        font-size: 22px;
+    }
+
+    .about-content p {
+        font-size: 17px;
     }
 
     .contact-section {
