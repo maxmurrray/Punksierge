@@ -146,17 +146,36 @@ nav a:hover { opacity: 0.75; }
     line-height: 1.6;
 }
 
-/* ── CTA ── */
-.cta-section {
+/* ── Contact ── */
+.contact-section {
     text-align: center;
     padding: 20px 24px 100px;
+    border-top: 1px solid #1e1e1e;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
-.cta-label {
-    font-size: 22px;
+.contact-heading {
+    font-size: 48px;
+    font-weight: 800;
+    color: #DE4097;
+    margin-bottom: 12px;
+}
+
+.contact-sub {
+    font-size: 20px;
     font-weight: 300;
     color: #666;
-    margin-bottom: 24px;
+    margin-bottom: 36px;
+}
+
+.contact-phone {
+    font-size: 52px;
+    font-weight: 800;
+    color: #fff;
+    letter-spacing: 2px;
+    margin-bottom: 40px;
+    font-variant-numeric: tabular-nums;
 }
 
 .cta-btn {
@@ -234,12 +253,17 @@ nav a:hover { opacity: 0.75; }
         width: 100%;
     }
 
-    .cta-section {
-        padding: 20px 24px 72px;
+    .contact-section {
+        padding: 40px 24px 72px;
     }
 
-    .cta-label {
-        font-size: 18px;
+    .contact-heading {
+        font-size: 36px;
+    }
+
+    .contact-phone {
+        font-size: 36px;
+        letter-spacing: 1px;
     }
 
     .cta-btn {
