@@ -106,6 +106,53 @@ nav a:hover { opacity: 0.75; }
     height: 256px;
 }
 
+/* ── Services ── */
+.services {
+    padding: 72px 60px 60px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.cards {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.card {
+    flex: 1;
+    max-width: 380px;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-top {
+    background: #DE4097;
+    padding: 22px 26px;
+}
+
+.card-top h3 {
+    font-size: 20px;
+    font-weight: 800;
+    color: #fff;
+    letter-spacing: 0.2px;
+}
+
+.card-body {
+    background: #161616;
+    padding: 22px 26px;
+    flex: 1;
+    border: 1px solid #2a2a2a;
+    border-top: none;
+}
+
+.card-body p {
+    font-size: 17px;
+    font-weight: 400;
+    color: #aaa;
+    line-height: 1.6;
+}
+
 /* ── About ── */
 .about-section {
     padding: 72px 60px 60px;
@@ -152,6 +199,20 @@ nav a:hover { opacity: 0.75; }
     color: #DE4097 !important;
     line-height: 1.75;
     font-style: italic;
+}
+
+.about-punks {
+    display: flex;
+    gap: 32px;
+    margin-top: 56px;
+}
+
+.about-punks img {
+    image-rendering: pixelated;
+    width: 160px;
+    height: 160px;
+    object-fit: cover;
+    object-position: top center;
 }
 
 /* ── Contact ── */
@@ -244,6 +305,21 @@ nav a:hover { opacity: 0.75; }
     .punk-showcase img.featured {
         width: 128px;
         height: 128px;
+    }
+
+    .services {
+        padding: 48px 20px 40px;
+    }
+
+    .cards {
+        flex-direction: column;
+        align-items: center;
+        gap: 16px;
+    }
+
+    .card {
+        max-width: 100%;
+        width: 100%;
     }
 
     .about-section {
