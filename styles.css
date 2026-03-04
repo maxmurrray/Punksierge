@@ -172,3 +172,78 @@ nav a:hover { opacity: 0.75; }
 }
 
 .cta-btn:hover { opacity: 0.85; }
+
+/* ── Mobile ── */
+@media (max-width: 768px) {
+    header {
+        padding: 20px 24px;
+    }
+
+    .logo-text {
+        font-size: 24px;
+    }
+
+    nav {
+        gap: 24px;
+    }
+
+    nav a {
+        font-size: 15px;
+    }
+
+    .hero {
+        padding: 40px 20px 0;
+    }
+
+    .hero h1 {
+        font-size: 36px;
+        margin-bottom: 10px;
+    }
+
+    .hero p {
+        font-size: 20px;
+        margin-bottom: 36px;
+    }
+
+    .punk-showcase {
+        gap: 12px;
+    }
+
+    .punk-showcase img {
+        width: 96px;
+        height: 96px;
+    }
+
+    .punk-showcase img.featured {
+        width: 128px;
+        height: 128px;
+    }
+
+    .services {
+        padding: 48px 20px 40px;
+    }
+
+    .cards {
+        flex-direction: column;
+        align-items: center;
+        gap: 16px;
+    }
+
+    .card {
+        max-width: 100%;
+        width: 100%;
+    }
+
+    .cta-section {
+        padding: 20px 24px 72px;
+    }
+
+    .cta-label {
+        font-size: 18px;
+    }
+
+    .cta-btn {
+        font-size: 18px;
+        padding: 16px 40px;
+    }
+}
