@@ -194,6 +194,16 @@ nav a:hover { opacity: 0.75; }
     font-weight: 700;
 }
 
+.about-content a {
+    color: #DE4097;
+    text-decoration: none;
+    font-weight: 700;
+}
+
+.about-content a:hover {
+    text-decoration: underline;
+}
+
 .about-close {
     font-size: 19px;
     font-weight: 400;
