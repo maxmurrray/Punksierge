@@ -16,7 +16,7 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 24px 60px;
+    padding: 18px 60px;
     position: sticky;
     top: 0;
     z-index: 100;
@@ -63,15 +63,15 @@ nav a:hover { color: #DE4097; }
 
 /* ── Hero ── */
 .hero {
-    padding: 60px 60px 50px;
+    padding: 36px 60px 22px;
 }
 
 .hero h1 {
-    font-size: 52px;
+    font-size: 46px;
     font-weight: 700;
     color: #fff;
     line-height: 1.1;
-    margin-bottom: 14px;
+    margin-bottom: 10px;
     letter-spacing: -0.5px;
 }
 
@@ -94,8 +94,8 @@ nav a:hover { color: #DE4097; }
 }
 
 .marquee-track img {
-    width: 160px;
-    height: 160px;
+    width: 110px;
+    height: 110px;
     image-rendering: pixelated;
     flex-shrink: 0;
     display: block;
@@ -103,7 +103,7 @@ nav a:hover { color: #DE4097; }
 
 /* ── Services ── */
 .services {
-    padding: 50px 60px 10px;
+    padding: 22px 60px 8px;
     max-width: 900px;
 }
 
@@ -115,7 +115,7 @@ nav a:hover { color: #DE4097; }
     display: flex;
     align-items: center;
     gap: 16px;
-    padding: 22px 0;
+    padding: 15px 0;
     background: none;
     border: none;
     cursor: pointer;
@@ -161,7 +161,7 @@ nav a:hover { color: #DE4097; }
 
 /* ── Contact ── */
 .contact-section {
-    padding: 50px 60px 80px;
+    padding: 16px 60px 16px;
     max-width: 900px;
 }
 
@@ -225,7 +225,7 @@ nav a:hover { color: #DE4097; }
 
 /* ── Footer ── */
 footer {
-    padding: 0 60px 30px;
+    padding: 0 60px 14px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -535,5 +535,13 @@ a.blog-link .bullet {
 
     footer {
         padding: 0 24px 30px;
+    }
+}
+
+/* ── Desktop: no scroll, everything fits in viewport ── */
+@media (min-width: 769px) {
+    html, body {
+        height: 100vh;
+        overflow: hidden;
     }
 }
