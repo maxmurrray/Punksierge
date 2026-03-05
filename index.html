@@ -82,7 +82,8 @@
             }
 
             function updateArrows() {
-                prevBtn.style.display = viewHead > 0 ? 'flex' : 'none';
+                prevBtn.style.visibility = viewHead > 0 ? 'visible' : 'hidden';
+                prevBtn.style.pointerEvents = viewHead > 0 ? 'auto' : 'none';
             }
 
             // Initial render — no-transition so CSS slot positions apply instantly (no slide-in on load)
