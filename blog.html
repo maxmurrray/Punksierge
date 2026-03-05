@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog — Punksierge</title>
+    <meta name="description" content="Stories, deep dives, and intel from two real CryptoPunk holders.">
+    <meta property="og:title" content="Blog — Punksierge">
+    <meta property="og:description" content="Stories, deep dives, and intel from two real CryptoPunk holders.">
+    <meta property="og:image" content="og-image.png">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="og-image.png">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="stylesheet" href="https://use.typekit.net/iyz5ted.css">
+    <link rel="stylesheet" href="styles.css">
+    <!-- Force scroll to top -->
+    <script>
+        if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+        if (window.location.hash) {
+            history.replaceState(null, null, window.location.pathname + window.location.search);
+        }
+        function forceTop() {
+            document.documentElement.scrollTop = 0;
+            document.body.scrollTop = 0;
+            window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+        }
+        document.addEventListener('DOMContentLoaded', forceTop);
+        window.addEventListener('load', forceTop);
+        window.addEventListener('pageshow', forceTop);
+    </script>
+</head>
+<body>
+
+    <header>
+        <a href="index.html" class="logo">
+            <svg class="logo-icon" viewBox="0 0 2 3" width="12" height="18" fill="#DE4097">
+                <rect x="0" y="0" width="1" height="1"/>
+                <rect x="1" y="1" width="1" height="1"/>
+                <rect x="0" y="2" width="1" height="1"/>
+            </svg>
+            <span class="logo-text">Punksierge</span>
+        </a>
+        <nav>
+            <a href="blog.html">Blog</a>
+            <a href="about.html">About</a>
+            <a href="#" onclick="event.preventDefault();document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Contact</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="about-section">
+            <h2 class="about-heading">Blog</h2>
+
+            <div class="blog-list">
+
+                <div class="service-item">
+                    <a href="#" class="service-header blog-link">
+                        <svg viewBox="0 0 2 3" width="10" height="15" fill="#DE4097" class="bullet">
+                            <rect x="0" y="0" width="1" height="1"/>
+                            <rect x="1" y="1" width="1" height="1"/>
+                            <rect x="0" y="2" width="1" height="1"/>
+                        </svg>
+                        <span>The Night 10,000 Punks Were Given Away for Free</span>
+                    </a>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <span class="footer-copy">
+            <span class="footer-c">&copy;</span>
+            <svg viewBox="0 0 2 3" width="8" height="12" fill="#DE4097">
+                <rect x="0" y="0" width="1" height="1"/>
+                <rect x="1" y="1" width="1" height="1"/>
+                <rect x="0" y="2" width="1" height="1"/>
+            </svg>
+            <span class="footer-name">Punksierge</span>
+        </span>
+        <a href="https://x.com/punksierge?s=21" target="_blank" class="footer-x" aria-label="Punksierge on X">
+            <svg viewBox="0 0 300 300" width="16" height="16" fill="#DE4097" xmlns="http://www.w3.org/2000/svg">
+                <path d="M178.57 127.15 290.27 0h-26.46l-97.03 110.38L89.34 0H0l117.13 166.93L0 300.25h26.46l102.4-116.59 81.8 116.59h89.34M36.01 19.54H76.66l187.13 261.17h-40.66"/>
+            </svg>
+        </a>
+    </footer>
+
+</body>
+</html>

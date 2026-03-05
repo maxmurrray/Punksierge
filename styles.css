@@ -259,6 +259,29 @@ footer {
 
 .footer-x:hover { opacity: 1; }
 
+/* ── Blog List ── */
+.blog-list {
+    max-width: 900px;
+    margin-top: 10px;
+}
+
+a.blog-link {
+    text-decoration: none;
+}
+
+a.blog-link span {
+    color: #fff;
+    transition: color 0.15s;
+}
+
+a.blog-link:hover span {
+    color: #DE4097;
+}
+
+a.blog-link .bullet {
+    flex-shrink: 0;
+}
+
 /* ── About Page ── */
 .about-section {
     padding: 60px 60px 80px;
