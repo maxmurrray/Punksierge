@@ -16,7 +16,7 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 60px;
+    padding: 18px 60px;
     position: sticky;
     top: 0;
     z-index: 100;
@@ -63,15 +63,15 @@ nav a:hover { color: #DE4097; }
 
 /* ── Hero ── */
 .hero {
-    padding: 44px 60px 34px;
+    padding: 40px 60px 30px;
 }
 
 .hero h1 {
-    font-size: 48px;
+    font-size: 46px;
     font-weight: 700;
     color: #fff;
     line-height: 1.1;
-    margin-bottom: 12px;
+    margin-bottom: 10px;
     letter-spacing: -0.5px;
 }
 
@@ -94,8 +94,8 @@ nav a:hover { color: #DE4097; }
 }
 
 .marquee-track img {
-    width: 140px;
-    height: 140px;
+    width: 130px;
+    height: 130px;
     image-rendering: pixelated;
     flex-shrink: 0;
     display: block;
@@ -103,7 +103,7 @@ nav a:hover { color: #DE4097; }
 
 /* ── Services ── */
 .services {
-    padding: 38px 60px 8px;
+    padding: 32px 60px 8px;
     max-width: 900px;
 }
 
@@ -115,7 +115,7 @@ nav a:hover { color: #DE4097; }
     display: flex;
     align-items: center;
     gap: 16px;
-    padding: 19px 0;
+    padding: 16px 0;
     background: none;
     border: none;
     cursor: pointer;
