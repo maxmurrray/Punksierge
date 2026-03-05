@@ -10,7 +10,7 @@ body {
     background-image:
         linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
         linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
-    background-size: 12px 12px;
+    background-size: 10px 10px;
     color: #793F98;
     min-height: 100vh;
 }
@@ -20,7 +20,7 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 28px 60px;
+    padding: 30px 60px;
     max-width: 1200px;
     margin: 0 auto;
 }
@@ -28,7 +28,7 @@ header {
 .logo {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 10px;
     text-decoration: none;
 }
 
@@ -47,7 +47,7 @@ nav {
 }
 
 nav a {
-    font-size: 18px;
+    font-size: 20px;
     font-weight: 500;
     color: #793F98;
     text-decoration: none;
@@ -57,7 +57,7 @@ nav a {
 nav a:hover { color: #793F98; }
 
 .nav-phone {
-    font-size: 18px;
+    font-size: 20px;
     font-weight: 400;
     color: #793F98;
     letter-spacing: 0.2px;
@@ -66,24 +66,24 @@ nav a:hover { color: #793F98; }
 /* ── Hero ── */
 .hero {
     text-align: center;
-    padding: 64px 24px 0;
+    padding: 60px 20px 0;
     max-width: 1200px;
     margin: 0 auto;
 }
 
 .hero h1 {
-    font-size: 62px;
+    font-size: 60px;
     font-weight: 800;
     color: #793F98;
-    margin-bottom: 14px;
-    line-height: 1.05;
+    margin-bottom: 10px;
+    line-height: 1.0;
 }
 
 .hero p {
-    font-size: 28px;
+    font-size: 30px;
     font-weight: 300;
     color: #793F98;
-    margin-bottom: 28px;
+    margin-bottom: 30px;
 }
 
 /* ── Punk Carousel ── */
@@ -91,7 +91,7 @@ nav a:hover { color: #793F98; }
     display: flex;
     align-items: flex-end;
     justify-content: center;
-    margin-top: 8px;
+    margin-top: 10px;
 }
 
 .punk-carousel {
@@ -116,6 +116,14 @@ nav a:hover { color: #793F98; }
     transition: none !important;
 }
 
+/* Grid-snapped positions:
+   Side punks = 160px (16 grid units)
+   Center punk = 240px (24 grid units = 1 grid unit per pixel)
+   Left side:   left=20px,  right edge=180px
+   Center:      left=180px, right edge=420px
+   Right side:  left=420px, right edge=580px
+   Gaps:        20px left margin, 0px between punks, 20px right margin
+*/
 .punk-carousel img[data-slot="left"]        { width:160px; height:160px; left:20px;   opacity:1; }
 .punk-carousel img[data-slot="center"]      { width:240px; height:240px; left:180px;  opacity:1; }
 .punk-carousel img[data-slot="right"]       { width:160px; height:160px; left:420px;  opacity:1; }
@@ -129,9 +137,9 @@ nav a:hover { color: #793F98; }
     background: none;
     border: none;
     color: #793F98;
-    font-size: 28px;
+    font-size: 30px;
     cursor: pointer;
-    padding: 0 16px;
+    padding: 0 20px;
     margin-bottom: 60px;
     height: 40px;
     display: flex;
@@ -159,7 +167,7 @@ nav a:hover { color: #793F98; }
 .cards {
     display: flex;
     justify-content: center;
-    gap: 26px;
+    gap: 30px;
 }
 
 .card {
@@ -170,7 +178,7 @@ nav a:hover { color: #793F98; }
 }
 
 .card-top {
-    padding: 16px 26px;
+    padding: 20px 30px;
     cursor: pointer;
     transition: filter 0.2s ease;
 }
@@ -193,7 +201,7 @@ nav a:hover { color: #793F98; }
 
 .card-body {
     background: #1c1c1c;
-    padding: 0 26px;
+    padding: 0 30px;
     max-height: 0;
     overflow: hidden;
     border: none;
@@ -202,11 +210,11 @@ nav a:hover { color: #793F98; }
 
 .card:hover .card-body {
     max-height: 220px;
-    padding: 20px 26px;
+    padding: 20px 30px;
 }
 
 .card-body p {
-    font-size: 17px;
+    font-size: 20px;
     font-weight: 400;
     color: #fff;
     line-height: 1.6;
@@ -215,14 +223,14 @@ nav a:hover { color: #793F98; }
 
 /* ── About ── */
 .about-section {
-    padding: 72px 60px 60px;
+    padding: 70px 60px 60px;
     max-width: 800px;
     margin: 0 auto;
     border-top: 1px solid #1e1e1e;
 }
 
 .about-heading {
-    font-size: 48px;
+    font-size: 50px;
     font-weight: 800;
     color: #793F98;
     margin-bottom: 40px;
@@ -231,18 +239,18 @@ nav a:hover { color: #793F98; }
 .about-content {
     display: flex;
     flex-direction: column;
-    gap: 22px;
+    gap: 20px;
 }
 
 .about-lead {
-    font-size: 26px;
+    font-size: 30px;
     font-weight: 700;
     color: #793F98;
     line-height: 1.2;
 }
 
 .about-content p {
-    font-size: 19px;
+    font-size: 20px;
     font-weight: 400;
     color: #793F98;
     line-height: 1.75;
@@ -264,7 +272,7 @@ nav a:hover { color: #793F98; }
 }
 
 .about-close {
-    font-size: 19px;
+    font-size: 20px;
     font-weight: 400;
     color: #793F98 !important;
     line-height: 1.75;
@@ -273,8 +281,8 @@ nav a:hover { color: #793F98; }
 
 .about-punks {
     display: flex;
-    gap: 32px;
-    margin-top: 56px;
+    gap: 30px;
+    margin-top: 60px;
 }
 
 .about-punks img {
@@ -288,28 +296,28 @@ nav a:hover { color: #793F98; }
 /* ── Contact ── */
 .contact-section {
     text-align: center;
-    padding: 20px 24px 100px;
+    padding: 20px 20px 100px;
     border-top: 1px solid #1e1e1e;
     max-width: 1200px;
     margin: 0 auto;
 }
 
 .contact-heading {
-    font-size: 48px;
+    font-size: 50px;
     font-weight: 800;
     color: #793F98;
-    margin-bottom: 12px;
+    margin-bottom: 10px;
 }
 
 .contact-sub {
     font-size: 20px;
     font-weight: 300;
     color: #793F98;
-    margin-bottom: 36px;
+    margin-bottom: 40px;
 }
 
 .contact-phone {
-    font-size: 52px;
+    font-size: 50px;
     font-weight: 800;
     color: #793F98;
     letter-spacing: 2px;
@@ -323,7 +331,7 @@ nav a:hover { color: #793F98; }
     color: #793F98;
     font-size: 20px;
     font-weight: 700;
-    padding: 18px 56px;
+    padding: 20px 60px;
     text-decoration: none;
     letter-spacing: 0.5px;
     transition: opacity 0.15s;
@@ -334,19 +342,23 @@ nav a:hover { color: #793F98; }
 /* ── Mobile ── */
 @media (max-width: 768px) {
     header {
-        padding: 20px 24px;
+        padding: 20px;
     }
 
     .logo-text {
-        font-size: 24px;
+        font-size: 20px;
     }
 
     nav {
-        gap: 24px;
+        gap: 20px;
     }
 
     nav a {
-        font-size: 15px;
+        font-size: 14px;
+    }
+
+    .nav-phone {
+        font-size: 14px;
     }
 
     .hero {
@@ -354,38 +366,39 @@ nav a:hover { color: #793F98; }
     }
 
     .hero h1 {
-        font-size: 36px;
+        font-size: 40px;
         margin-bottom: 10px;
     }
 
     .hero p {
         font-size: 20px;
-        margin-bottom: 16px;
+        margin-bottom: 20px;
     }
 
+    /* Mobile: grid = 10px still; side punks 80px = 8 grid units, center 160px = 16 grid units */
     .punk-carousel {
         width: 320px;
         height: 180px;
     }
 
-    .punk-carousel img[data-slot="left"]        { width:88px;  height:88px;  left:8px;    opacity:1; }
-    .punk-carousel img[data-slot="center"]      { width:136px; height:136px; left:92px;   opacity:1; }
-    .punk-carousel img[data-slot="right"]       { width:88px;  height:88px;  left:224px;  opacity:1; }
+    .punk-carousel img[data-slot="left"]        { width:80px;  height:80px;  left:0px;    opacity:1; }
+    .punk-carousel img[data-slot="center"]      { width:160px; height:160px; left:80px;   opacity:1; }
+    .punk-carousel img[data-slot="right"]       { width:80px;  height:80px;  left:240px;  opacity:1; }
     .punk-carousel img[data-slot="exit-left"]   { width:70px;  height:70px;  left:-90px;  opacity:0; }
     .punk-carousel img[data-slot="exit-right"]  { width:70px;  height:70px;  left:360px;  opacity:0; }
     .punk-carousel img[data-slot="enter-right"] { width:70px;  height:70px;  left:360px;  opacity:0; }
     .punk-carousel img[data-slot="enter-left"]  { width:70px;  height:70px;  left:-90px;  opacity:0; }
 
-    .carousel-arrow { margin-bottom: 24px; font-size: 20px; padding: 0 10px; }
+    .carousel-arrow { margin-bottom: 30px; font-size: 20px; padding: 0 10px; }
 
     .services {
-        padding: 24px 20px 40px;
+        padding: 30px 20px 40px;
     }
 
     .cards {
         flex-direction: column;
         align-items: center;
-        gap: 16px;
+        gap: 20px;
     }
 
     .card {
@@ -394,37 +407,37 @@ nav a:hover { color: #793F98; }
     }
 
     .about-section {
-        padding: 48px 20px 40px;
+        padding: 40px 20px 40px;
     }
 
     .about-heading {
-        font-size: 36px;
-        margin-bottom: 28px;
+        font-size: 40px;
+        margin-bottom: 30px;
     }
 
     .about-lead {
-        font-size: 22px;
+        font-size: 20px;
     }
 
     .about-content p {
-        font-size: 17px;
+        font-size: 20px;
     }
 
     .contact-section {
-        padding: 40px 24px 72px;
+        padding: 40px 20px 70px;
     }
 
     .contact-heading {
-        font-size: 36px;
+        font-size: 40px;
     }
 
     .contact-phone {
-        font-size: 36px;
+        font-size: 30px;
         letter-spacing: 1px;
     }
 
     .cta-btn {
-        font-size: 18px;
-        padding: 16px 40px;
+        font-size: 20px;
+        padding: 20px 40px;
     }
 }
