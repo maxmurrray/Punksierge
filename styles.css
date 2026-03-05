@@ -200,18 +200,32 @@ nav a:hover { color: #DE4097; }
 
 .cta-btn {
     display: inline-block;
-    background: #DE4097;
+    position: relative;
+    overflow: hidden;
+    background: #000;
     color: #fff;
+    border: 2px solid #DE4097;
     font-family: "chakra-petch", sans-serif;
     font-size: 15px;
     font-weight: 700;
     padding: 14px 40px;
     text-decoration: none;
     letter-spacing: 0.5px;
-    transition: opacity 0.15s;
+    cursor: pointer;
 }
 
-.cta-btn:hover { opacity: 0.85; }
+.cta-btn .btn-text {
+    position: relative;
+    z-index: 2;
+}
+
+.cta-btn canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    pointer-events: none;
+}
 
 /* ── About Page ── */
 .about-section {

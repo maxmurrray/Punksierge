@@ -155,6 +155,72 @@
                 }
             });
         });
+
+        // ── Pixel fill button ──
+        document.querySelectorAll('.cta-btn').forEach(btn => {
+            const PIXEL = 10;
+
+            // Wrap text
+            const label = btn.textContent.trim();
+            btn.textContent = '';
+            const textSpan = document.createElement('span');
+            textSpan.className = 'btn-text';
+            textSpan.textContent = label;
+            btn.appendChild(textSpan);
+
+            // Canvas layer
+            const canvas = document.createElement('canvas');
+            btn.appendChild(canvas);
+            const ctx = canvas.getContext('2d');
+
+            let pixels = [];
+            let filled = 0;
+            let direction = 0;
+            let raf = null;
+
+            function init() {
+                canvas.width  = btn.offsetWidth;
+                canvas.height = btn.offsetHeight;
+                pixels = [];
+                for (let y = 0; y < canvas.height; y += PIXEL)
+                    for (let x = 0; x < canvas.width; x += PIXEL)
+                        pixels.push([x, y]);
+                // Shuffle for random fill order
+                for (let i = pixels.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [pixels[i], pixels[j]] = [pixels[j], pixels[i]];
+                }
+            }
+
+            function render() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                ctx.fillStyle = '#DE4097';
+                for (let i = 0; i < filled; i++)
+                    ctx.fillRect(pixels[i][0], pixels[i][1], PIXEL - 1, PIXEL - 1);
+            }
+
+            function animate() {
+                const step = Math.max(1, Math.ceil(pixels.length / 7));
+                filled = Math.min(pixels.length, Math.max(0, filled + direction * step));
+                render();
+                if ((direction > 0 && filled < pixels.length) ||
+                    (direction < 0 && filled > 0))
+                    raf = requestAnimationFrame(animate);
+            }
+
+            btn.addEventListener('mouseenter', () => {
+                cancelAnimationFrame(raf);
+                if (filled === 0) init();
+                direction = 1;
+                raf = requestAnimationFrame(animate);
+            });
+
+            btn.addEventListener('mouseleave', () => {
+                cancelAnimationFrame(raf);
+                direction = -1;
+                raf = requestAnimationFrame(animate);
+            });
+        });
     </script>
 
 </body>
