@@ -229,7 +229,9 @@ nav a:hover { color: #DE4097; }
 /* ── Footer ── */
 footer {
     padding: 0 60px 30px;
-    max-width: 900px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .footer-copy {
@@ -250,6 +252,15 @@ footer {
     color: #DE4097;
     letter-spacing: 0;
 }
+
+.footer-x {
+    display: flex;
+    align-items: center;
+    opacity: 0.8;
+    transition: opacity 0.15s;
+}
+
+.footer-x:hover { opacity: 1; }
 
 /* ── About Page ── */
 .about-section {
