@@ -389,6 +389,111 @@ a.blog-link .bullet {
     text-align: center;
 }
 
+/* ── Contact Modal ── */
+#contact-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.72);
+    z-index: 200;
+}
+
+#contact-modal {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 201;
+    background: #DE4097;
+    padding: 22px 28px 22px 24px;
+    width: min(420px, calc(100vw - 48px));
+}
+
+.contact-modal-row {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.contact-item {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+    flex-shrink: 0;
+}
+
+.contact-calendly-btn {
+    display: inline-block;
+    background: #000;
+    color: #fff;
+    font-family: "chakra-petch", sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 9px 16px;
+    text-decoration: none;
+    white-space: nowrap;
+    cursor: pointer;
+}
+
+.contact-calendly-btn:hover {
+    background: #1a1a1a;
+}
+
+.contact-preferred {
+    font-family: "chakra-petch", sans-serif;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(0, 0, 0, 0.55);
+    padding-left: 1px;
+}
+
+.contact-divider {
+    width: 1px;
+    height: 34px;
+    background: rgba(0, 0, 0, 0.2);
+    flex-shrink: 0;
+}
+
+.contact-icon-link {
+    color: #000;
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+    transition: color 0.15s;
+}
+
+.contact-icon-link:hover {
+    color: #fff;
+}
+
+.contact-close {
+    position: absolute;
+    top: 8px;
+    right: 10px;
+    background: none;
+    border: none;
+    color: rgba(0, 0, 0, 0.45);
+    font-size: 13px;
+    cursor: pointer;
+    font-family: "chakra-petch", sans-serif;
+    padding: 2px 4px;
+    line-height: 1;
+}
+
+.contact-close:hover {
+    color: #000;
+}
+
+#contact-modal {
+    position: fixed; /* re-declare for stacking context */
+}
+
 /* ── Mobile ── */
 @media (max-width: 768px) {
     header {
