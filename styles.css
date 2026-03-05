@@ -226,6 +226,30 @@ nav a:hover { color: #DE4097; }
     pointer-events: none;
 }
 
+/* ── Footer ── */
+footer {
+    padding: 20px 60px 30px;
+}
+
+.footer-copy {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.footer-c {
+    font-size: 12px;
+    color: #DE4097;
+}
+
+.footer-name {
+    font-family: "chakra-petch", sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    color: #DE4097;
+    letter-spacing: 0;
+}
+
 /* ── About Page ── */
 .about-section {
     padding: 60px 60px 80px;
