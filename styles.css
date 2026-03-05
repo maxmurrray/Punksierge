@@ -11,7 +11,7 @@ body {
         linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
         linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
     background-size: 12px 12px;
-    color: #fff;
+    color: #793F98;
     min-height: 100vh;
 }
 
@@ -37,7 +37,7 @@ header {
 .logo-text {
     font-size: 30px;
     font-weight: 800;
-    color: #DE4097;
+    color: #793F98;
     letter-spacing: -0.5px;
 }
 
@@ -49,17 +49,17 @@ nav {
 nav a {
     font-size: 18px;
     font-weight: 500;
-    color: #C0C0C0;
+    color: #793F98;
     text-decoration: none;
     letter-spacing: 0.2px;
 }
 
-nav a:hover { color: #fff; }
+nav a:hover { color: #793F98; }
 
 .nav-phone {
     font-size: 18px;
     font-weight: 400;
-    color: #555;
+    color: #793F98;
     letter-spacing: 0.2px;
 }
 
@@ -74,7 +74,7 @@ nav a:hover { color: #fff; }
 .hero h1 {
     font-size: 62px;
     font-weight: 800;
-    color: #FFFFFF;
+    color: #793F98;
     margin-bottom: 14px;
     line-height: 1.05;
 }
@@ -82,7 +82,7 @@ nav a:hover { color: #fff; }
 .hero p {
     font-size: 28px;
     font-weight: 300;
-    color: #6B6B6B;
+    color: #793F98;
     margin-bottom: 28px;
 }
 
@@ -128,11 +128,10 @@ nav a:hover { color: #fff; }
 .carousel-arrow {
     background: none;
     border: none;
-    color: rgba(255,255,255,0.7);
+    color: #793F98;
     font-size: 28px;
     cursor: pointer;
     padding: 0 16px;
-    /* align-items:flex-end on parent + margin-bottom centers arrow on side punk (160px tall, center=80px from bottom) */
     margin-bottom: 60px;
     height: 40px;
     display: flex;
@@ -141,11 +140,11 @@ nav a:hover { color: #fff; }
     flex-shrink: 0;
 }
 
-.carousel-arrow:hover { color: #DE4097; }
+.carousel-arrow:hover { color: #793F98; }
 
 @keyframes blink-pulse {
-    0%, 100% { opacity: 1;   color: #DE4097; }
-    50%       { opacity: 0.2; color: #fff; }
+    0%, 100% { opacity: 1;   color: #793F98; }
+    50%       { opacity: 0.2; color: #793F98; }
 }
 
 .blinking { animation: blink-pulse 1.2s ease-in-out infinite; }
@@ -178,7 +177,7 @@ nav a:hover { color: #fff; }
 .card-top h3 {
     font-size: 20px;
     font-weight: 800;
-    color: #fff;
+    color: #793F98;
     letter-spacing: 0.2px;
 }
 
@@ -193,7 +192,7 @@ nav a:hover { color: #fff; }
 .card-body p {
     font-size: 17px;
     font-weight: 400;
-    color: #aaa;
+    color: #793F98;
     line-height: 1.6;
 }
 
@@ -208,7 +207,7 @@ nav a:hover { color: #fff; }
 .about-heading {
     font-size: 48px;
     font-weight: 800;
-    color: #FFFFFF;
+    color: #793F98;
     margin-bottom: 40px;
 }
 
@@ -221,24 +220,24 @@ nav a:hover { color: #fff; }
 .about-lead {
     font-size: 26px;
     font-weight: 700;
-    color: #FFFFFF;
+    color: #793F98;
     line-height: 1.2;
 }
 
 .about-content p {
     font-size: 19px;
     font-weight: 400;
-    color: #bbb;
+    color: #793F98;
     line-height: 1.75;
 }
 
 .about-content strong {
-    color: #fff;
+    color: #793F98;
     font-weight: 700;
 }
 
 .about-content a {
-    color: #DE4097;
+    color: #793F98;
     text-decoration: none;
     font-weight: 700;
 }
@@ -250,7 +249,7 @@ nav a:hover { color: #fff; }
 .about-close {
     font-size: 19px;
     font-weight: 400;
-    color: #888 !important;
+    color: #793F98 !important;
     line-height: 1.75;
     font-style: italic;
 }
@@ -281,21 +280,21 @@ nav a:hover { color: #fff; }
 .contact-heading {
     font-size: 48px;
     font-weight: 800;
-    color: #FFFFFF;
+    color: #793F98;
     margin-bottom: 12px;
 }
 
 .contact-sub {
     font-size: 20px;
     font-weight: 300;
-    color: #555;
+    color: #793F98;
     margin-bottom: 36px;
 }
 
 .contact-phone {
     font-size: 52px;
     font-weight: 800;
-    color: #fff;
+    color: #793F98;
     letter-spacing: 2px;
     margin-bottom: 40px;
     font-variant-numeric: tabular-nums;
@@ -304,7 +303,7 @@ nav a:hover { color: #fff; }
 .cta-btn {
     display: inline-block;
     background: #DE4097;
-    color: #fff;
+    color: #793F98;
     font-size: 20px;
     font-weight: 700;
     padding: 18px 56px;
@@ -360,7 +359,6 @@ nav a:hover { color: #fff; }
     .punk-carousel img[data-slot="enter-right"] { width:70px;  height:70px;  left:360px;  opacity:0; }
     .punk-carousel img[data-slot="enter-left"]  { width:70px;  height:70px;  left:-90px;  opacity:0; }
 
-    /* Mobile: side punks 88px tall, center=44px from bottom */
     .carousel-arrow { margin-bottom: 24px; font-size: 20px; padding: 0 10px; }
 
     .services {
