@@ -417,12 +417,10 @@ a.blog-link .bullet {
     gap: 20px;
 }
 
-.contact-item {
+.contact-preferred-wrap {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 5px;
-    flex-shrink: 0;
+    justify-content: center;
+    margin-top: 7px;
 }
 
 .contact-calendly-btn {
