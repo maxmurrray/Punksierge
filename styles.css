@@ -8,7 +8,8 @@ body {
     font-family: "chakra-petch", sans-serif;
     background-color: #000;
     color: #fff;
-    min-height: 100vh;
+    height: 100vh;
+    overflow: hidden;
 }
 
 /* ── Header ── */
@@ -59,20 +60,20 @@ nav a:hover { color: #DE4097; }
 
 /* ── Hero ── */
 .hero {
-    padding: 60px 60px 50px;
+    padding: 30px 60px 20px;
 }
 
 .hero h1 {
-    font-size: 52px;
+    font-size: 48px;
     font-weight: 700;
     color: #fff;
     line-height: 1.1;
-    margin-bottom: 14px;
+    margin-bottom: 10px;
     letter-spacing: -0.5px;
 }
 
 .hero p {
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 300;
     color: #aaa;
 }
@@ -92,8 +93,8 @@ nav a:hover { color: #DE4097; }
 }
 
 .marquee-track img {
-    width: 160px;
-    height: 160px;
+    width: 120px;
+    height: 120px;
     image-rendering: pixelated;
     flex-shrink: 0;
     display: block;
@@ -106,7 +107,7 @@ nav a:hover { color: #DE4097; }
 
 /* ── Services ── */
 .services {
-    padding: 50px 60px 10px;
+    padding: 20px 60px 0;
     max-width: 900px;
 }
 
@@ -118,7 +119,7 @@ nav a:hover { color: #DE4097; }
     display: flex;
     align-items: center;
     gap: 16px;
-    padding: 22px 0;
+    padding: 14px 0;
     background: none;
     border: none;
     cursor: pointer;
@@ -164,38 +165,8 @@ nav a:hover { color: #DE4097; }
 
 /* ── Contact ── */
 .contact-section {
-    padding: 0 60px 80px;
+    padding: 20px 60px 0;
     max-width: 900px;
-}
-
-.contact-row {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    padding: 22px 0 30px;
-    border-bottom: 1px solid #1c1c1c;
-    margin-bottom: 36px;
-}
-
-.contact-row span {
-    font-size: 17px;
-    font-weight: 600;
-    color: #fff;
-}
-
-.contact-body {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 20px;
-    padding-left: 26px;
-}
-
-.contact-body p {
-    font-size: 15px;
-    font-weight: 400;
-    color: #666;
-    line-height: 1.75;
 }
 
 .cta-btn {
@@ -345,8 +316,8 @@ nav a:hover { color: #DE4097; }
     }
 
     .marquee-track img {
-        width: 80px;
-        height: 80px;
+        width: 70px;
+        height: 70px;
     }
 
     .services {
