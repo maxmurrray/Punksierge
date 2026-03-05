@@ -49,7 +49,7 @@
         <nav>
             <a href="blog.html">1-800-PUNKS</a>
             <a href="about.html">About</a>
-            <a href="#" onclick="event.preventDefault();document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Contact</a>
+            <a href="#" onclick="event.preventDefault(); openContact()">Contact</a>
         </nav>
     </header>
 
@@ -248,7 +248,8 @@
             }
 
             function animate() {
-                const step = Math.max(1, Math.ceil(pixels.length / 7));
+                const isDesktop = window.innerWidth > 768;
+                const step = Math.max(1, Math.ceil(pixels.length / (isDesktop ? 22 : 7)));
                 filled = Math.min(pixels.length, Math.max(0, filled + direction * step));
                 render();
                 if ((direction > 0 && filled < pixels.length) ||
