@@ -151,7 +151,7 @@ nav a:hover { color: #DE4097; }
 }
 
 .service-item.open .service-body {
-    max-height: 200px;
+    max-height: 300px;
     padding: 0 0 22px 26px;
 }
 
