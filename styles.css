@@ -406,7 +406,7 @@ a.blog-link .bullet {
     transform: translate(-50%, -50%);
     z-index: 201;
     background: #DE4097;
-    padding: 22px 28px 22px 24px;
+    padding: 22px 28px 34px 24px;
     width: min(420px, calc(100vw - 48px));
 }
 
@@ -417,10 +417,9 @@ a.blog-link .bullet {
     gap: 20px;
 }
 
-.contact-preferred-wrap {
-    display: flex;
-    justify-content: center;
-    margin-top: 7px;
+.contact-calendly-wrap {
+    position: relative;
+    flex-shrink: 0;
 }
 
 .contact-calendly-btn {
@@ -443,13 +442,17 @@ a.blog-link .bullet {
 }
 
 .contact-preferred {
+    position: absolute;
+    top: calc(100% + 5px);
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
     font-family: "chakra-petch", sans-serif;
     font-size: 9px;
     font-weight: 700;
     letter-spacing: 0.15em;
     text-transform: uppercase;
     color: rgba(0, 0, 0, 0.55);
-    padding-left: 1px;
 }
 
 .contact-divider {
