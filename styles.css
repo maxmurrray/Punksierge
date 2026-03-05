@@ -202,9 +202,8 @@ nav a:hover { color: #DE4097; }
     display: inline-block;
     position: relative;
     overflow: hidden;
-    background: #000;
+    background: #DE4097;
     color: #fff;
-    border: 2px solid #DE4097;
     font-family: "chakra-petch", sans-serif;
     font-size: 15px;
     font-weight: 700;
