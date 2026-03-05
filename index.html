@@ -158,6 +158,21 @@
             track.appendChild(img);
         });
 
+        // rAF-driven marquee — never throttled, never stops
+        let marqueePos = 0;
+        const SPEED = 0.9; // px per frame (~54px/s at 60fps)
+
+        function tickMarquee() {
+            marqueePos -= SPEED;
+            const halfWidth = track.scrollWidth / 2;
+            if (halfWidth > 0 && -marqueePos >= halfWidth) {
+                marqueePos += halfWidth; // seamless reset
+            }
+            track.style.transform = `translateX(${marqueePos}px)`;
+            requestAnimationFrame(tickMarquee);
+        }
+        requestAnimationFrame(tickMarquee);
+
         // ── Services accordion ──
         document.querySelectorAll('.service-item').forEach(item => {
             item.querySelector('.service-header').addEventListener('click', function() {

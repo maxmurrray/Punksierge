@@ -87,8 +87,6 @@ nav a:hover { color: #DE4097; }
 
 .marquee-track {
     display: flex;
-    animation: marquee-scroll 50s linear infinite;
-    will-change: transform;
 }
 
 .marquee-track img {
@@ -97,11 +95,6 @@ nav a:hover { color: #DE4097; }
     image-rendering: pixelated;
     flex-shrink: 0;
     display: block;
-}
-
-@keyframes marquee-scroll {
-    0%   { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
 }
 
 /* ── Services ── */
