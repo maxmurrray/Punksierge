@@ -41,10 +41,9 @@
             <h1>Want To Buy a CryptoPunk?</h1>
             <p>We'll help you make the right move.</p>
             <div class="carousel-outer">
-                <div id="punk-carousel" class="punk-carousel">
-                    <button id="prev-punk" class="carousel-arrow arrow-left" aria-label="Previous Punk">&#8592;</button>
-                    <button id="next-punk" class="carousel-arrow arrow-right blinking" aria-label="Next Punk">&#8594;</button>
-                </div>
+                <button id="prev-punk" class="carousel-arrow arrow-left" aria-label="Previous Punk">&#8592;</button>
+                <div id="punk-carousel" class="punk-carousel"></div>
+                <button id="next-punk" class="carousel-arrow arrow-right blinking" aria-label="Next Punk">&#8594;</button>
             </div>
         </section>
 
@@ -86,9 +85,9 @@
             }
 
             // Initial render
-            track.insertBefore(makeImg(history[0], 'left'), prevBtn);
-            track.insertBefore(makeImg(history[1], 'center'), prevBtn);
-            track.insertBefore(makeImg(history[2], 'right'), prevBtn);
+            track.appendChild(makeImg(history[0], 'left'));
+            track.appendChild(makeImg(history[1], 'center'));
+            track.appendChild(makeImg(history[2], 'right'));
             updateArrows();
 
             // Go forward
@@ -111,7 +110,7 @@
                 const [l, c, r] = imgs;
 
                 const newEl = makeImg(history[viewHead + 3], 'enter-right');
-                track.insertBefore(newEl, prevBtn);
+                track.appendChild(newEl);
                 newEl.getBoundingClientRect();
 
                 l.dataset.slot = 'exit-left';
@@ -134,7 +133,7 @@
                 const [l, c, r] = imgs;
 
                 const newEl = makeImg(history[viewHead - 1], 'enter-left');
-                track.insertBefore(newEl, l);
+                track.insertBefore(newEl, imgs[0]);
                 newEl.getBoundingClientRect();
 
                 r.dataset.slot = 'exit-right';

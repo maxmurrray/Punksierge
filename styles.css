@@ -89,6 +89,7 @@ nav a:hover { color: #fff; }
 /* ── Punk Carousel ── */
 .carousel-outer {
     display: flex;
+    align-items: flex-end;
     justify-content: center;
     margin-top: 8px;
 }
@@ -121,29 +122,22 @@ nav a:hover { color: #fff; }
 
 /* ── Carousel Arrows ── */
 .carousel-arrow {
-    position: absolute;
-    top: 50%;
     background: none;
     border: none;
-    color: rgba(255,255,255,0.85);
-    font-size: 32px;
+    color: rgba(255,255,255,0.7);
+    font-size: 28px;
     cursor: pointer;
-    z-index: 10;
-    padding: 8px;
-    transform: translate(-50%, -50%);
-    transition: color 0.2s;
+    padding: 0 16px;
+    /* align-items:flex-end on parent + margin-bottom centers arrow on side punk (160px tall, center=80px from bottom) */
+    margin-bottom: 60px;
+    height: 40px;
     display: flex;
     align-items: center;
-    justify-content: center;
+    transition: color 0.2s;
+    flex-shrink: 0;
 }
 
 .carousel-arrow:hover { color: #DE4097; }
-
-/* Right arrow centered on right punk: left=420 + 80 = 500px */
-.arrow-right { left: 500px; }
-
-/* Left arrow centered on left punk: left=20 + 80 = 100px */
-.arrow-left  { left: 100px; }
 
 @keyframes blink-pulse {
     0%, 100% { opacity: 1;   color: #DE4097; }
@@ -362,9 +356,8 @@ nav a:hover { color: #fff; }
     .punk-carousel img[data-slot="enter-right"] { width:70px;  height:70px;  left:360px;  opacity:0; }
     .punk-carousel img[data-slot="enter-left"]  { width:70px;  height:70px;  left:-90px;  opacity:0; }
 
-    /* Mobile arrow positions: right punk center = 224+44=268, left punk center = 8+44=52 */
-    .arrow-right { left: 268px; font-size: 22px; }
-    .arrow-left  { left: 52px;  font-size: 22px; }
+    /* Mobile: side punks 88px tall, center=44px from bottom */
+    .carousel-arrow { margin-bottom: 24px; font-size: 20px; padding: 0 10px; }
 
     .services {
         padding: 48px 20px 40px;
