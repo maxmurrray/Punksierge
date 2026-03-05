@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Punk #8348: The Only 7-Trait Punk in Existence — Punksierge</title>
+    <meta name="description" content="Out of 10,000 CryptoPunks, only one has 7 visible traits. The odds of it existing: 1 in 10 billion. Here's the math.">
+    <meta property="og:title" content="Punk #8348: The Only 7-Trait Punk in Existence">
+    <meta property="og:description" content="Out of 10,000 CryptoPunks, only one has 7 visible traits. The odds of it existing: 1 in 10 billion.">
+    <meta property="og:image" content="../og-image.png">
+    <meta property="og:type" content="article">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="icon" type="image/png" href="../favicon.png">
+    <link rel="stylesheet" href="https://use.typekit.net/iyz5ted.css">
+    <link rel="stylesheet" href="../styles.css">
+    <script>
+        if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+        if (window.location.hash) history.replaceState(null, null, window.location.pathname + window.location.search);
+        function forceTop() { document.documentElement.scrollTop = 0; document.body.scrollTop = 0; window.scrollTo({ top: 0, left: 0, behavior: 'instant' }); }
+        document.addEventListener('DOMContentLoaded', forceTop);
+        window.addEventListener('load', forceTop);
+        window.addEventListener('pageshow', forceTop);
+    </script>
+    <style>
+        .post-section { padding: 50px 60px 100px; max-width: 800px; }
+
+        .post-back {
+            display: inline-flex; align-items: center; gap: 8px;
+            font-size: 13px; font-weight: 600; color: #555;
+            text-decoration: none; letter-spacing: 0.3px;
+            margin-bottom: 48px; transition: color 0.15s;
+        }
+        .post-back:hover { color: #DE4097; }
+
+        .post-title { font-size: 40px; font-weight: 700; color: #fff; line-height: 1.15; letter-spacing: -0.5px; margin-bottom: 16px; }
+        .post-meta { font-size: 13px; color: #444; margin-bottom: 52px; }
+        .post-divider { width: 32px; height: 2px; background: #DE4097; margin-bottom: 40px; }
+
+        .post-body { display: flex; flex-direction: column; gap: 20px; }
+        .post-body p { font-size: 16px; color: #999; line-height: 1.85; }
+        .post-body strong { color: #fff; font-weight: 700; }
+        .post-body h3 { font-size: 20px; font-weight: 700; color: #fff; margin-top: 16px; letter-spacing: -0.2px; }
+
+        .pullquote { border-left: 2px solid #DE4097; padding-left: 24px; margin: 8px 0; }
+        .pullquote p { font-size: 18px; font-weight: 600; color: #ccc; line-height: 1.6; font-style: italic; }
+
+        /* ── Punk Hero ── */
+        .punk-hero {
+            display: flex;
+            align-items: flex-start;
+            gap: 40px;
+            margin: 8px 0 16px;
+        }
+
+        .punk-hero-img {
+            flex-shrink: 0;
+        }
+
+        .punk-hero-img a { display: block; line-height: 0; }
+
+        .punk-hero-img img {
+            width: 200px;
+            height: 200px;
+            image-rendering: pixelated;
+            background-color: #638596;
+            display: block;
+        }
+
+        .punk-hero-stats {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            padding-top: 4px;
+        }
+
+        .stat-row {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .stat-label {
+            font-size: 11px;
+            font-weight: 600;
+            color: #555;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .stat-value {
+            font-size: 22px;
+            font-weight: 700;
+            color: #fff;
+            letter-spacing: -0.5px;
+        }
+
+        .stat-sub {
+            font-size: 12px;
+            color: #444;
+        }
+
+        /* ── Trait Cards ── */
+        .trait-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            border: 1px solid #111;
+        }
+
+        .trait-card {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding: 16px 20px;
+            border-bottom: 1px solid #111;
+            cursor: default;
+            transition: background 0.15s;
+        }
+
+        .trait-card:last-child { border-bottom: none; }
+        .trait-card:hover { background: #0a0a0a; }
+
+        .trait-num {
+            font-size: 12px;
+            font-weight: 700;
+            color: #DE4097;
+            width: 20px;
+            flex-shrink: 0;
+            text-align: center;
+        }
+
+        .trait-info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .trait-name {
+            font-size: 14px;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 6px;
+        }
+
+        .trait-bar-wrap {
+            width: 100%;
+            height: 2px;
+            background: #111;
+            position: relative;
+        }
+
+        .trait-bar {
+            height: 2px;
+            background: #DE4097;
+            width: 0;
+            transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .trait-count {
+            font-size: 12px;
+            color: #444;
+            white-space: nowrap;
+            flex-shrink: 0;
+            text-align: right;
+            min-width: 120px;
+        }
+
+        .trait-count span {
+            display: block;
+            font-size: 11px;
+            color: #333;
+        }
+
+        /* ── Distribution Table ── */
+        .dist-table {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            border: 1px solid #111;
+            margin-top: 8px;
+        }
+
+        .dist-row {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 12px 20px;
+            border-bottom: 1px solid #111;
+        }
+
+        .dist-row:last-child { border-bottom: none; }
+
+        .dist-row.highlight { background: #0d0a0d; }
+
+        .dist-label {
+            font-size: 13px;
+            font-weight: 700;
+            color: #666;
+            width: 64px;
+            flex-shrink: 0;
+        }
+
+        .dist-row.highlight .dist-label { color: #DE4097; }
+
+        .dist-bar-wrap {
+            flex: 1;
+            height: 2px;
+            background: #111;
+        }
+
+        .dist-bar {
+            height: 2px;
+            background: #222;
+            width: 0;
+            transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .dist-row.highlight .dist-bar { background: #DE4097; }
+
+        .dist-count {
+            font-size: 12px;
+            color: #444;
+            width: 80px;
+            text-align: right;
+            flex-shrink: 0;
+        }
+
+        .dist-row.highlight .dist-count { color: #DE4097; font-weight: 700; }
+
+        /* ── Math Block ── */
+        .math-block {
+            background: #060606;
+            border: 1px solid #111;
+            padding: 28px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .math-row {
+            display: flex;
+            align-items: baseline;
+            gap: 12px;
+            font-size: 14px;
+            color: #555;
+            flex-wrap: wrap;
+        }
+
+        .math-trait { color: #888; font-weight: 600; min-width: 130px; }
+        .math-pct { color: #DE4097; font-weight: 700; font-size: 13px; }
+        .math-sep { color: #222; }
+
+        .math-result {
+            border-top: 1px solid #111;
+            padding-top: 16px;
+            margin-top: 4px;
+        }
+
+        .math-result .math-label { font-size: 12px; color: #444; text-transform: uppercase; letter-spacing: 0.5px; display: block; margin-bottom: 6px; }
+        .math-result .math-big { font-size: 28px; font-weight: 700; color: #fff; letter-spacing: -0.5px; }
+        .math-result .math-note { font-size: 12px; color: #333; margin-top: 4px; display: block; }
+
+        @media (max-width: 768px) {
+            .post-section { padding: 36px 24px 80px; }
+            .post-title { font-size: 26px; }
+            .post-body p { font-size: 15px; }
+            .post-body h3 { font-size: 18px; }
+            .pullquote p { font-size: 16px; }
+            .punk-hero { flex-direction: column; gap: 24px; }
+            .punk-hero-img img { width: 160px; height: 160px; }
+            .trait-count { min-width: 80px; }
+            .math-trait { min-width: 110px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="../index.html" class="logo">
+            <svg class="logo-icon" viewBox="0 0 2 3" width="12" height="18" fill="#DE4097">
+                <rect x="0" y="0" width="1" height="1"/>
+                <rect x="1" y="1" width="1" height="1"/>
+                <rect x="0" y="2" width="1" height="1"/>
+            </svg>
+            <span class="logo-text">Punksierge</span>
+        </a>
+        <nav>
+            <a href="../blog.html">1-800-PUNKS</a>
+            <a href="../about.html">About</a>
+            <a href="../index.html#contact">Contact</a>
+        </nav>
+    </header>
+
+    <main>
+        <article class="post-section">
+
+            <a href="../blog.html" class="post-back">
+                <svg viewBox="0 0 16 16" width="12" height="12" fill="currentColor">
+                    <path d="M10.5 3L5.5 8l5 5" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                Blog
+            </a>
+
+            <h1 class="post-title">Punk #8348: The Only 7-Trait Punk in Existence</h1>
+            <p class="post-meta">March 2026 &nbsp;·&nbsp; Punksierge</p>
+
+            <div class="post-divider"></div>
+
+            <div class="punk-hero">
+                <div class="punk-hero-img">
+                    <a href="https://www.larvalabs.com/cryptopunks/details/8348" target="_blank" rel="noopener">
+                        <img src="../cryptopunk-8348.png" alt="CryptoPunk #8348 — the only 7-trait punk">
+                    </a>
+                </div>
+                <div class="punk-hero-stats">
+                    <div class="stat-row">
+                        <span class="stat-label">Punk</span>
+                        <span class="stat-value">#8348</span>
+                        <span class="stat-sub">Male · Medium skin</span>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">Traits</span>
+                        <span class="stat-value">7</span>
+                        <span class="stat-sub">1 of 1 in existence</span>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">Top sale</span>
+                        <span class="stat-value">1,100 ETH</span>
+                        <span class="stat-sub">~$1.79M · Oct 2022</span>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">Status</span>
+                        <span class="stat-value" style="font-size:15px; padding-top:3px;">Not for sale</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="post-body" style="margin-top: 48px;">
+
+                <p>There are 10,000 CryptoPunks. The generator assigned each one a set of traits — hair, accessories, facial features — pulled from a fixed pool. Most punks ended up with two or three. A few loaded up on four or five. Eleven reached six.</p>
+
+                <p>And then there is <strong>Punk #8348</strong>.</p>
+
+                <p>He has seven traits. He is the only one. In a collection of 10,000, he is alone at the top of a category that has exactly one member: himself. The generator never produced another like him — and mathematically, it almost certainly never would again even if you ran 10,000 more punks.</p>
+
+                <div class="pullquote">
+                    <p>What makes him genuinely extraordinary isn't just the count. It's that you can see all seven. Every single one lands visibly on a 24×24 pixel face.</p>
+                </div>
+
+                <p>That's rarer than it sounds. Most punks with multiple traits run into overlap — two accessories fighting for the same pixels, one obscuring the other. The generator doesn't guarantee visibility. It just assigns. #8348 somehow escaped that entirely.</p>
+
+                <div class="post-divider" style="margin-top: 8px;"></div>
+                <h3>The 7 traits — hover each one</h3>
+            </div>
+
+            <!-- Trait Cards -->
+            <div class="trait-grid" style="margin-bottom: 48px;">
+                <div class="trait-card">
+                    <span class="trait-num">1</span>
+                    <div class="trait-info">
+                        <div class="trait-name">Top Hat</div>
+                        <div class="trait-bar-wrap"><div class="trait-bar" data-pct="1.15"></div></div>
+                    </div>
+                    <div class="trait-count">115 punks<span>1.15% of collection</span></div>
+                </div>
+                <div class="trait-card">
+                    <span class="trait-num">2</span>
+                    <div class="trait-info">
+                        <div class="trait-name">Classic Shades</div>
+                        <div class="trait-bar-wrap"><div class="trait-bar" data-pct="5.02"></div></div>
+                    </div>
+                    <div class="trait-count">502 punks<span>5.02% of collection</span></div>
+                </div>
+                <div class="trait-card">
+                    <span class="trait-num">3</span>
+                    <div class="trait-info">
+                        <div class="trait-name">Earring</div>
+                        <div class="trait-bar-wrap"><div class="trait-bar" data-pct="24.59"></div></div>
+                    </div>
+                    <div class="trait-count">2,459 punks<span>24.59% of collection</span></div>
+                </div>
+                <div class="trait-card">
+                    <span class="trait-num">4</span>
+                    <div class="trait-info">
+                        <div class="trait-name">Big Beard</div>
+                        <div class="trait-bar-wrap"><div class="trait-bar" data-pct="1.46"></div></div>
+                    </div>
+                    <div class="trait-count">146 punks<span>1.46% of collection</span></div>
+                </div>
+                <div class="trait-card">
+                    <span class="trait-num">5</span>
+                    <div class="trait-info">
+                        <div class="trait-name">Cigarette</div>
+                        <div class="trait-bar-wrap"><div class="trait-bar" data-pct="9.61"></div></div>
+                    </div>
+                    <div class="trait-count">961 punks<span>9.61% of collection</span></div>
+                </div>
+                <div class="trait-card">
+                    <span class="trait-num">6</span>
+                    <div class="trait-info">
+                        <div class="trait-name">Buck Teeth</div>
+                        <div class="trait-bar-wrap"><div class="trait-bar" data-pct="0.78"></div></div>
+                    </div>
+                    <div class="trait-count">78 punks<span>0.78% of collection</span></div>
+                </div>
+                <div class="trait-card">
+                    <span class="trait-num">7</span>
+                    <div class="trait-info">
+                        <div class="trait-name">Mole</div>
+                        <div class="trait-bar-wrap"><div class="trait-bar" data-pct="6.44"></div></div>
+                    </div>
+                    <div class="trait-count">644 punks<span>6.44% of collection</span></div>
+                </div>
+            </div>
+
+            <div class="post-body">
+                <p>Notice how they stack: a Top Hat on the crown, Classic Shades across the eyes, an Earring on the ear, a Big Beard covering the jaw, a Cigarette at the mouth, Buck Teeth peeking through, and a Mole on the cheek. Each trait occupies a distinct zone on the face. No collision. No hiding. Every one of them legible at 24 pixels wide.</p>
+
+                <div class="post-divider" style="margin-top: 8px;"></div>
+                <h3>The math: why this punk statistically shouldn't exist</h3>
+
+                <p>If you treat each trait as an independent event — which is a simplification, but a useful one — the probability of any single punk having all seven of these traits at once looks like this:</p>
+            </div>
+
+            <!-- Math Block -->
+            <div class="math-block" style="margin: 8px 0 32px;">
+                <div class="math-row"><span class="math-trait">Top Hat</span><span class="math-sep">→</span><span class="math-pct">1.15%</span><span class="math-sep">(115 of 10,000)</span></div>
+                <div class="math-row"><span class="math-trait">Classic Shades</span><span class="math-sep">→</span><span class="math-pct">5.02%</span><span class="math-sep">(502 of 10,000)</span></div>
+                <div class="math-row"><span class="math-trait">Earring</span><span class="math-sep">→</span><span class="math-pct">24.59%</span><span class="math-sep">(2,459 of 10,000)</span></div>
+                <div class="math-row"><span class="math-trait">Big Beard</span><span class="math-sep">→</span><span class="math-pct">1.46%</span><span class="math-sep">(146 of 10,000)</span></div>
+                <div class="math-row"><span class="math-trait">Cigarette</span><span class="math-sep">→</span><span class="math-pct">9.61%</span><span class="math-sep">(961 of 10,000)</span></div>
+                <div class="math-row"><span class="math-trait">Buck Teeth</span><span class="math-sep">→</span><span class="math-pct">0.78%</span><span class="math-sep">(78 of 10,000)</span></div>
+                <div class="math-row"><span class="math-trait">Mole</span><span class="math-sep">→</span><span class="math-pct">6.44%</span><span class="math-sep">(644 of 10,000)</span></div>
+                <div class="math-result">
+                    <span class="math-label">Multiply all seven probabilities together</span>
+                    <span class="math-big">1 in 9,995,009,247</span>
+                    <span class="math-note">Expected punks with all 7: 0.000001 — essentially zero. Yet here we are.</span>
+                </div>
+            </div>
+
+            <div class="post-body">
+                <p>Roughly <strong>1 in 10 billion</strong>. In a collection of 10,000, the expected number of punks with this exact trait combination is effectively zero. The generator produced it anyway. That's not luck — that's a statistical anomaly that shouldn't have happened in a collection this size, and never will again.</p>
+
+                <div class="post-divider" style="margin-top: 8px;"></div>
+                <h3>Where #8348 sits in the trait distribution</h3>
+                <p>For context, here's how all 10,000 punks break down by attribute count:</p>
+            </div>
+
+            <!-- Distribution Table -->
+            <div class="dist-table" style="margin: 8px 0 48px;">
+                <div class="dist-row">
+                    <span class="dist-label">0 traits</span>
+                    <div class="dist-bar-wrap"><div class="dist-bar" data-pct="0.08"></div></div>
+                    <span class="dist-count">8 punks</span>
+                </div>
+                <div class="dist-row">
+                    <span class="dist-label">1 trait</span>
+                    <div class="dist-bar-wrap"><div class="dist-bar" data-pct="3.33"></div></div>
+                    <span class="dist-count">333 punks</span>
+                </div>
+                <div class="dist-row">
+                    <span class="dist-label">2 traits</span>
+                    <div class="dist-bar-wrap"><div class="dist-bar" data-pct="35.60"></div></div>
+                    <span class="dist-count">3,560 punks</span>
+                </div>
+                <div class="dist-row">
+                    <span class="dist-label">3 traits</span>
+                    <div class="dist-bar-wrap"><div class="dist-bar" data-pct="45.01"></div></div>
+                    <span class="dist-count">4,501 punks</span>
+                </div>
+                <div class="dist-row">
+                    <span class="dist-label">4 traits</span>
+                    <div class="dist-bar-wrap"><div class="dist-bar" data-pct="14.20"></div></div>
+                    <span class="dist-count">1,420 punks</span>
+                </div>
+                <div class="dist-row">
+                    <span class="dist-label">5 traits</span>
+                    <div class="dist-bar-wrap"><div class="dist-bar" data-pct="1.66"></div></div>
+                    <span class="dist-count">166 punks</span>
+                </div>
+                <div class="dist-row">
+                    <span class="dist-label">6 traits</span>
+                    <div class="dist-bar-wrap"><div class="dist-bar" data-pct="0.11"></div></div>
+                    <span class="dist-count">11 punks</span>
+                </div>
+                <div class="dist-row highlight">
+                    <span class="dist-label">7 traits</span>
+                    <div class="dist-bar-wrap"><div class="dist-bar" data-pct="0.01"></div></div>
+                    <span class="dist-count">1 punk</span>
+                </div>
+            </div>
+
+            <div class="post-body">
+                <div class="pullquote">
+                    <p>The collection peaks at 3 traits. It falls off sharply from there. At 7, the curve doesn't just fall off — it ends. There is nothing beyond #8348. He is the ceiling.</p>
+                </div>
+
+                <h3>What he's worth</h3>
+
+                <p>In October 2022, someone bid <strong>1,100 ETH — roughly $1.79 million</strong> — on Punk #8348. The bid was ultimately withdrawn. His last recorded sale was 85 ETH. He is not currently for sale, and his current holder has shown no sign of listing him.</p>
+
+                <p>Statistically improbable. Visually packed. Historically important. Punk #8348 is not the flashiest punk in the collection — no alien skin, no Ape type. He's a regular male punk who somehow drew the most complex hand in the game. And unlike most anomalies, you can see exactly why he's different the moment you look at him.</p>
+
+                <p>Count the traits. All seven are right there.</p>
+            </div>
+
+        </article>
+    </main>
+
+    <footer>
+        <span class="footer-copy">
+            <span class="footer-c">&copy;</span>
+            <svg viewBox="0 0 2 3" width="8" height="12" fill="#DE4097">
+                <rect x="0" y="0" width="1" height="1"/>
+                <rect x="1" y="1" width="1" height="1"/>
+                <rect x="0" y="2" width="1" height="1"/>
+            </svg>
+            <span class="footer-name">Punksierge</span>
+        </span>
+        <a href="https://x.com/punksierge?s=21" target="_blank" class="footer-x" aria-label="Punksierge on X">
+            <svg viewBox="0 0 300 300" width="16" height="16" fill="#DE4097" xmlns="http://www.w3.org/2000/svg">
+                <path d="M178.57 127.15 290.27 0h-26.46l-97.03 110.38L89.34 0H0l117.13 166.93L0 300.25h26.46l102.4-116.59 81.8 116.59h89.34M36.01 19.54H76.66l187.13 261.17h-40.66"/>
+            </svg>
+        </a>
+    </footer>
+
+    <script>
+        // Animate bars when they enter the viewport
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.querySelectorAll('.trait-bar, .dist-bar').forEach(bar => {
+                        const pct = parseFloat(bar.dataset.pct);
+                        bar.style.width = Math.min(pct * 4, 100) + '%';
+                    });
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.trait-grid, .dist-table').forEach(el => observer.observe(el));
+    </script>
+
+</body>
+</html>
