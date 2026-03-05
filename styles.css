@@ -5,7 +5,7 @@
 }
 
 body {
-    font-family: 'Chakra Petch', sans-serif;
+    font-family: "chakra-petch", sans-serif;
     background-color: #000;
     color: #fff;
     min-height: 100vh;
@@ -136,7 +136,7 @@ nav a:hover { color: #DE4097; }
 }
 
 .service-header span {
-    font-family: 'Chakra Petch', sans-serif;
+    font-family: "chakra-petch", sans-serif;
     font-size: 17px;
     font-weight: 600;
     color: #fff;
@@ -202,7 +202,7 @@ nav a:hover { color: #DE4097; }
     display: inline-block;
     background: #DE4097;
     color: #fff;
-    font-family: 'Chakra Petch', sans-serif;
+    font-family: "chakra-petch", sans-serif;
     font-size: 15px;
     font-weight: 700;
     padding: 14px 40px;
