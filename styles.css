@@ -170,7 +170,7 @@ nav a:hover { color: #793F98; }
 }
 
 .card-top {
-    padding: 22px 26px;
+    padding: 10px 26px;
 }
 
 .card:nth-child(1) .card-top { background: #786689; }
@@ -186,18 +186,18 @@ nav a:hover { color: #793F98; }
 }
 
 .card-body {
-    background: #161616;
-    padding: 22px 26px;
+    background: transparent;
+    padding: 18px 26px;
     flex: 1;
-    border: 1px solid #2a2a2a;
-    border-top: none;
+    border: none;
 }
 
 .card-body p {
     font-size: 17px;
     font-weight: 400;
-    color: #793F98;
+    color: #fff;
     line-height: 1.6;
+    text-align: center;
 }
 
 /* ── About ── */
