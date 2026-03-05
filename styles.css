@@ -159,7 +159,7 @@ nav a:hover { color: #793F98; }
 .cards {
     display: flex;
     justify-content: center;
-    gap: 20px;
+    gap: 26px;
 }
 
 .card {
@@ -170,13 +170,19 @@ nav a:hover { color: #793F98; }
 }
 
 .card-top {
-    padding: 10px 26px;
+    padding: 16px 26px;
+    cursor: pointer;
+    transition: filter 0.2s ease;
 }
 
 .card:nth-child(1) .card-top { background: #786689; }
 .card:nth-child(2) .card-top { background: #68846B; }
 .card:nth-child(3) .card-top { background: #60757D; }
 .card:nth-child(4) .card-top { background: #7F5A58; }
+
+.card:hover .card-top {
+    filter: brightness(1.18);
+}
 
 .card-top h3 {
     font-size: 20px;
@@ -186,10 +192,17 @@ nav a:hover { color: #793F98; }
 }
 
 .card-body {
-    background: transparent;
-    padding: 18px 26px;
-    flex: 1;
+    background: #1c1c1c;
+    padding: 0 26px;
+    max-height: 0;
+    overflow: hidden;
     border: none;
+    transition: max-height 0.4s ease, padding 0.35s ease;
+}
+
+.card:hover .card-body {
+    max-height: 220px;
+    padding: 20px 26px;
 }
 
 .card-body p {
