@@ -228,7 +228,8 @@ nav a:hover { color: #DE4097; }
 
 /* ── Footer ── */
 footer {
-    padding: 20px 60px 30px;
+    padding: 0 60px 30px;
+    max-width: 900px;
 }
 
 .footer-copy {
