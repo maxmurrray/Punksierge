@@ -293,14 +293,15 @@ nav a:hover { color: #DE4097; }
 
 .about-punks {
     display: flex;
-    gap: 20px;
-    margin-top: 36px;
+    gap: 14px;
+    margin-top: 24px;
 }
 
 .punk-card {
-    position: relative;
-    width: 64px;
-    height: 64px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
     flex-shrink: 0;
 }
 
@@ -311,20 +312,12 @@ nav a:hover { color: #DE4097; }
     image-rendering: pixelated;
 }
 
-.punk-card span {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-family: 'Chakra Petch', sans-serif;
-    font-size: 9px;
-    font-weight: 700;
-    color: #fff;
-    background: rgba(0, 0, 0, 0.55);
-    padding: 2px 4px;
-    letter-spacing: 0.3px;
-    white-space: nowrap;
-    pointer-events: none;
+.punk-sig {
+    font-family: 'Dancing Script', cursive;
+    font-size: 14px;
+    font-weight: 500;
+    color: #555;
+    text-align: center;
 }
 
 /* ── Mobile ── */
