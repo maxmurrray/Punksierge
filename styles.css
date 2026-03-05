@@ -83,7 +83,7 @@ nav a:hover { color: #fff; }
     font-size: 28px;
     font-weight: 300;
     color: #6B6B6B;
-    margin-bottom: 56px;
+    margin-bottom: 28px;
 }
 
 /* ── Punk Carousel ── */
@@ -148,7 +148,7 @@ nav a:hover { color: #fff; }
 
 /* ── Services ── */
 .services {
-    padding: 72px 60px 60px;
+    padding: 40px 60px 60px;
     max-width: 1200px;
     margin: 0 auto;
 }
@@ -340,7 +340,7 @@ nav a:hover { color: #fff; }
 
     .hero p {
         font-size: 20px;
-        margin-bottom: 36px;
+        margin-bottom: 16px;
     }
 
     .punk-carousel {
@@ -360,7 +360,7 @@ nav a:hover { color: #fff; }
     .carousel-arrow { margin-bottom: 24px; font-size: 20px; padding: 0 10px; }
 
     .services {
-        padding: 48px 20px 40px;
+        padding: 24px 20px 40px;
     }
 
     .cards {
