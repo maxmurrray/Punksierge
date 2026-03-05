@@ -44,7 +44,7 @@ nav {
 .nav-phone {
     font-size: 16px;
     font-weight: 400;
-    color: #DE4097;
+    color: #fff;
 }
 
 nav a {
@@ -139,7 +139,7 @@ nav a:hover { color: #DE4097; }
     font-family: 'Chakra Petch', sans-serif;
     font-size: 17px;
     font-weight: 600;
-    color: #DE4097;
+    color: #fff;
     letter-spacing: 0.2px;
 }
 
@@ -180,7 +180,7 @@ nav a:hover { color: #DE4097; }
 .contact-row span {
     font-size: 17px;
     font-weight: 600;
-    color: #DE4097;
+    color: #fff;
 }
 
 .contact-body {
