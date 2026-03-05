@@ -18,6 +18,8 @@
     
     <link rel="stylesheet" href="https://use.typekit.net/iyz5ted.css">
     <link rel="stylesheet" href="styles.css">
+    <!-- Force scroll to top before first paint — fixes mobile scroll restore -->
+    <script>if ('scrollRestoration' in history) history.scrollRestoration = 'manual'; window.scrollTo(0, 0);</script>
 </head>
 <body>
 
@@ -135,10 +137,6 @@
     </footer>
 
     <script>
-        // Always start at top on load/refresh
-        if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
-        window.scrollTo(0, 0);
-
         // ── Marquee ──
         const featured = [6058, 3355, 1021];
         const rest = Array.from({length: 10000}, (_, i) => i).filter(i => !featured.includes(i));
