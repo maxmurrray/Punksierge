@@ -170,14 +170,18 @@ nav a:hover { color: #793F98; }
 }
 
 .card-top {
-    background: #DE4097;
     padding: 22px 26px;
 }
+
+.card:nth-child(1) .card-top { background: #786689; }
+.card:nth-child(2) .card-top { background: #68846B; }
+.card:nth-child(3) .card-top { background: #60757D; }
+.card:nth-child(4) .card-top { background: #7F5A58; }
 
 .card-top h3 {
     font-size: 20px;
     font-weight: 800;
-    color: #793F98;
+    color: #fff;
     letter-spacing: 0.2px;
 }
 
