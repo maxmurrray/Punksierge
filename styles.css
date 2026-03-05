@@ -86,25 +86,57 @@ nav a:hover { color: #fff; }
     margin-bottom: 56px;
 }
 
-/* ── Punk Showcase ── */
-.punk-showcase {
+/* ── Punk Carousel ── */
+.carousel-outer {
     display: flex;
+    align-items: center;
     justify-content: center;
-    align-items: flex-end;
-    gap: 24px;
+    gap: 20px;
+    margin-top: 8px;
 }
 
-.punk-showcase img {
+.punk-carousel {
+    position: relative;
+    width: 600px;
+    height: 280px;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.punk-carousel img {
+    position: absolute;
+    bottom: 0;
     image-rendering: pixelated;
-    width: 192px;
-    height: 192px;
-    object-fit: cover;
-    object-position: top center;
+    transition: left 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+                width 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+                height 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+                opacity 0.4s ease;
 }
 
-.punk-showcase img.featured {
-    width: 256px;
-    height: 256px;
+.punk-carousel img[data-slot="left"]   { width:160px; height:160px; left:20px;   opacity:1; }
+.punk-carousel img[data-slot="center"] { width:240px; height:240px; left:180px;  opacity:1; }
+.punk-carousel img[data-slot="right"]  { width:160px; height:160px; left:420px;  opacity:1; }
+.punk-carousel img[data-slot="exit"]   { width:120px; height:120px; left:-160px; opacity:0; }
+.punk-carousel img[data-slot="enter"]  { width:120px; height:120px; left:640px;  opacity:0; }
+
+.carousel-btn {
+    background: none;
+    border: 2px solid #333;
+    color: #888;
+    font-size: 24px;
+    width: 48px;
+    height: 48px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: border-color 0.2s, color 0.2s;
+}
+
+.carousel-btn:hover {
+    border-color: #DE4097;
+    color: #DE4097;
 }
 
 /* ── Services ── */
@@ -304,18 +336,21 @@ nav a:hover { color: #fff; }
         margin-bottom: 36px;
     }
 
-    .punk-showcase {
-        gap: 12px;
+    .punk-carousel {
+        width: 320px;
+        height: 180px;
     }
 
-    .punk-showcase img {
-        width: 96px;
-        height: 96px;
-    }
+    .punk-carousel img[data-slot="left"]   { width:88px;  height:88px;  left:8px;    opacity:1; }
+    .punk-carousel img[data-slot="center"] { width:136px; height:136px; left:92px;   opacity:1; }
+    .punk-carousel img[data-slot="right"]  { width:88px;  height:88px;  left:224px;  opacity:1; }
+    .punk-carousel img[data-slot="exit"]   { width:70px;  height:70px;  left:-90px;  opacity:0; }
+    .punk-carousel img[data-slot="enter"]  { width:70px;  height:70px;  left:360px;  opacity:0; }
 
-    .punk-showcase img.featured {
-        width: 128px;
-        height: 128px;
+    .carousel-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 18px;
     }
 
     .services {

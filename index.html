@@ -40,12 +40,68 @@
         <section class="hero">
             <h1>Want To Buy a CryptoPunk?</h1>
             <p>We'll help you make the right move.</p>
-            <div class="punk-showcase">
-                <img src="cryptopunk-1021.png" alt="CryptoPunk 1021">
-                <img src="cryptopunk-3355.png" alt="CryptoPunk 3355" class="featured">
-                <img src="cryptopunk-6058.png" alt="CryptoPunk 6058">
+            <div class="carousel-outer">
+                <div id="punk-carousel" class="punk-carousel"></div>
+                <button id="next-punk" class="carousel-btn" aria-label="Next Punk">&#8594;</button>
             </div>
         </section>
+
+        <script>
+            // Build pool: featured 3 first, then 9997 others shuffled randomly
+            const featured = [1021, 3355, 6058];
+            const rest = Array.from({length: 10000}, (_, i) => i).filter(i => !featured.includes(i));
+            for (let i = rest.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [rest[i], rest[j]] = [rest[j], rest[i]];
+            }
+            const pool = [...featured, ...rest];
+            let head = 3; // next index to draw from pool
+
+            function punkUrl(id) {
+                return `https://www.larvalabs.com/public/images/cryptopunks/punk${String(id).padStart(4,'0')}.png`;
+            }
+
+            const track = document.getElementById('punk-carousel');
+            let animating = false;
+
+            function makeImg(id, slot) {
+                const img = document.createElement('img');
+                img.src = punkUrl(id);
+                img.alt = `CryptoPunk #${id}`;
+                img.dataset.slot = slot;
+                img.style.imageRendering = 'pixelated';
+                return img;
+            }
+
+            // Initial render
+            track.appendChild(makeImg(pool[0], 'left'));
+            track.appendChild(makeImg(pool[1], 'center'));
+            track.appendChild(makeImg(pool[2], 'right'));
+
+            document.getElementById('next-punk').addEventListener('click', function() {
+                if (animating || head >= pool.length) return;
+                animating = true;
+
+                const imgs = track.querySelectorAll('img');
+                const [l, c, r] = imgs;
+
+                // New punk starts off-screen right
+                const newEl = makeImg(pool[head++], 'enter');
+                track.appendChild(newEl);
+                newEl.getBoundingClientRect(); // force reflow
+
+                // Transition all to new slots
+                l.dataset.slot = 'exit';
+                c.dataset.slot = 'left';
+                r.dataset.slot = 'center';
+                newEl.dataset.slot = 'right';
+
+                l.addEventListener('transitionend', function() {
+                    l.remove();
+                    animating = false;
+                }, { once: true });
+            });
+        </script>
 
         <section class="services" id="services">
             <div class="cards">
