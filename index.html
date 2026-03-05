@@ -4,201 +4,169 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Punksierge</title>
-    <meta name="description" content="Want to buy a CryptoPunk? We'll help you make the right move.">
+    <meta name="description" content="Don't Buy Blind. Talk to a Holder.">
     <meta property="og:title" content="Punksierge">
-    <meta property="og:description" content="Want to buy a CryptoPunk? We'll help you make the right move.">
+    <meta property="og:description" content="Don't Buy Blind. Talk to a Holder.">
     <meta property="og:image" content="og-image.png">
     <meta property="og:type" content="website">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Punksierge">
-    <meta name="twitter:description" content="Want to buy a CryptoPunk? We'll help you make the right move.">
+    <meta name="twitter:description" content="Don't Buy Blind. Talk to a Holder.">
     <meta name="twitter:image" content="og-image.png">
     <link rel="icon" type="image/png" href="favicon.png">
-    <link rel="stylesheet" href="https://use.typekit.net/iyz5ted.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+
     <header>
-        <div class="logo">
-            <a href="index.html" class="logo">
-                <svg class="logo-icon" viewBox="0 0 2 3" width="14" height="21" fill="#DE4097">
-                    <rect x="1" y="0" width="1" height="1"/>
-                    <rect x="0" y="1" width="1" height="1"/>
-                    <rect x="1" y="2" width="1" height="1"/>
-                </svg>
-                <span class="logo-text">Punksierge</span>
-            </a>
-        </div>
+        <a href="index.html" class="logo">
+            <svg class="logo-icon" viewBox="0 0 2 3" width="12" height="18" fill="#DE4097">
+                <rect x="1" y="0" width="1" height="1"/>
+                <rect x="0" y="1" width="1" height="1"/>
+                <rect x="1" y="2" width="1" height="1"/>
+            </svg>
+            <span class="logo-text">Punksierge</span>
+        </a>
         <nav>
-            <a href="about.html">About Us</a>
             <span class="nav-phone">1-800-PUNKS</span>
-            <a href="#contact">Contact Us</a>
+            <a href="about.html">About</a>
+            <a href="#contact">Contact</a>
         </nav>
     </header>
 
     <main>
+
         <section class="hero">
-            <h1>Want To Buy a CryptoPunk?</h1>
-            <p>We'll help you make the right move.</p>
-            <div class="carousel-outer">
-                <button id="prev-punk" class="carousel-arrow arrow-left" aria-label="Previous Punk">&#8592;</button>
-                <div id="punk-carousel" class="punk-carousel"></div>
-                <button id="next-punk" class="carousel-arrow arrow-right blinking" aria-label="Next Punk">&#8594;</button>
-            </div>
+            <h1>Don't Buy Blind. Talk to a Holder.</h1>
+            <p>Two real holders. Free advice. No pressure.</p>
         </section>
 
-        <script>
-            // Build pool: featured 3 first, then 9997 shuffled
-            const featured = [1021, 3355, 6058];
-            const rest = Array.from({length: 10000}, (_, i) => i).filter(i => !featured.includes(i));
-            for (let i = rest.length - 1; i > 0; i--) {
-                const j = Math.floor(Math.random() * (i + 1));
-                [rest[i], rest[j]] = [rest[j], rest[i]];
-            }
-            const pool = [...featured, ...rest];
+        <!-- Punk Marquee -->
+        <div class="marquee-wrap">
+            <div class="marquee-track" id="marquee-track"></div>
+        </div>
 
-            // History: array of pool indices shown so far
-            const history = [0, 1, 2];
-            let viewHead = 0; // index into history where 'left' punk sits
+        <!-- Services -->
+        <section class="services">
 
-            function punkUrl(id) {
-                return `https://www.larvalabs.com/public/images/cryptopunks/punk${String(id).padStart(4,'0')}.png`;
-            }
-
-            const track = document.getElementById('punk-carousel');
-            const prevBtn = document.getElementById('prev-punk');
-            const nextBtn = document.getElementById('next-punk');
-            let animating = false;
-            let firstClick = false;
-
-            function makeImg(poolIdx, slot, noTransition = false) {
-                const img = document.createElement('img');
-                img.src = punkUrl(pool[poolIdx]);
-                img.alt = `CryptoPunk #${pool[poolIdx]}`;
-                img.dataset.slot = slot;
-                img.style.imageRendering = 'pixelated';
-                if (noTransition) img.classList.add('no-transition');
-                return img;
-            }
-
-            function updateArrows() {
-                prevBtn.style.visibility = viewHead > 0 ? 'visible' : 'hidden';
-                prevBtn.style.pointerEvents = viewHead > 0 ? 'auto' : 'none';
-            }
-
-            // Initial render — no-transition so CSS slot positions apply instantly (no slide-in on load)
-            const initImgs = [
-                makeImg(history[0], 'left',   true),
-                makeImg(history[1], 'center', true),
-                makeImg(history[2], 'right',  true),
-            ];
-            initImgs.forEach(img => track.appendChild(img));
-            updateArrows();
-            // Re-enable transitions after the browser has painted the initial positions
-            requestAnimationFrame(() => requestAnimationFrame(() => {
-                initImgs.forEach(img => img.classList.remove('no-transition'));
-            }));
-
-            // Go forward
-            nextBtn.addEventListener('click', function() {
-                if (animating) return;
-                animating = true;
-
-                // Stop blinking after first click
-                if (!firstClick) {
-                    firstClick = true;
-                    nextBtn.classList.remove('blinking');
-                }
-
-                // Add new punk to history if needed
-                if (viewHead + 3 >= history.length) {
-                    history.push(history.length < pool.length ? history.length : history.length - 1);
-                }
-
-                const imgs = [...track.querySelectorAll('img')];
-                const [l, c, r] = imgs;
-
-                const newEl = makeImg(history[viewHead + 3], 'enter-right');
-                track.appendChild(newEl);
-                newEl.getBoundingClientRect();
-
-                l.dataset.slot = 'exit-left';
-                c.dataset.slot = 'left';
-                r.dataset.slot = 'center';
-                newEl.dataset.slot = 'right';
-
-                viewHead++;
-                updateArrows();
-
-                l.addEventListener('transitionend', () => { l.remove(); animating = false; }, { once: true });
-            });
-
-            // Go back
-            prevBtn.addEventListener('click', function() {
-                if (animating || viewHead === 0) return;
-                animating = true;
-
-                const imgs = [...track.querySelectorAll('img')];
-                const [l, c, r] = imgs;
-
-                const newEl = makeImg(history[viewHead - 1], 'enter-left');
-                track.insertBefore(newEl, imgs[0]);
-                newEl.getBoundingClientRect();
-
-                r.dataset.slot = 'exit-right';
-                c.dataset.slot = 'right';
-                l.dataset.slot = 'center';
-                newEl.dataset.slot = 'left';
-
-                viewHead--;
-                updateArrows();
-
-                r.addEventListener('transitionend', () => { r.remove(); animating = false; }, { once: true });
-            });
-        </script>
-
-        <section class="services" id="services">
-            <div class="cards">
-                <div class="card">
-                    <div class="card-top">
-                        <h3>Punk Valuation Advice</h3>
-                    </div>
-                    <div class="card-body">
-                        <p>We break down traits, rarity, and what the market actually cares about. Know exactly what you're buying before you buy it.</p>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-top">
-                        <h3>Exclusive Connections</h3>
-                    </div>
-                    <div class="card-body">
-                        <p>We know holders. Access off-market Punks through our network — doors that aren't publicly listed, opened for you.</p>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-top">
-                        <h3>Punk Insights</h3>
-                    </div>
-                    <div class="card-body">
-                        <p>Just curious? We answer everything — from the history of the collection to how to evaluate your very first Punk.</p>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-top">
-                        <h3>Punk Security</h3>
-                    </div>
-                    <div class="card-body">
-                        <p>Owning a Punk means protecting it. We walk you through every storage and purchase method, the pros and cons of each, so you can hold with confidence.</p>
-                    </div>
+            <div class="service-item">
+                <button class="service-header" aria-expanded="false">
+                    <svg viewBox="0 0 2 3" width="10" height="15" fill="#DE4097" class="bullet">
+                        <rect x="1" y="0" width="1" height="1"/>
+                        <rect x="0" y="1" width="1" height="1"/>
+                        <rect x="1" y="2" width="1" height="1"/>
+                    </svg>
+                    <span>Punk Valuation Advice</span>
+                </button>
+                <div class="service-body">
+                    <p>We break down traits, rarity, and what the market actually cares about. Know exactly what you're buying before you buy it.</p>
                 </div>
             </div>
+
+            <div class="service-item">
+                <button class="service-header" aria-expanded="false">
+                    <svg viewBox="0 0 2 3" width="10" height="15" fill="#DE4097" class="bullet">
+                        <rect x="1" y="0" width="1" height="1"/>
+                        <rect x="0" y="1" width="1" height="1"/>
+                        <rect x="1" y="2" width="1" height="1"/>
+                    </svg>
+                    <span>Punk Insights</span>
+                </button>
+                <div class="service-body">
+                    <p>Just curious? We answer everything — from the history of the collection to how to evaluate your very first Punk.</p>
+                </div>
+            </div>
+
+            <div class="service-item">
+                <button class="service-header" aria-expanded="false">
+                    <svg viewBox="0 0 2 3" width="10" height="15" fill="#DE4097" class="bullet">
+                        <rect x="1" y="0" width="1" height="1"/>
+                        <rect x="0" y="1" width="1" height="1"/>
+                        <rect x="1" y="2" width="1" height="1"/>
+                    </svg>
+                    <span>Exclusive Connections</span>
+                </button>
+                <div class="service-body">
+                    <p>We know holders. Access off-market Punks through our network — doors that aren't publicly listed, opened for you.</p>
+                </div>
+            </div>
+
+            <div class="service-item">
+                <button class="service-header" aria-expanded="false">
+                    <svg viewBox="0 0 2 3" width="10" height="15" fill="#DE4097" class="bullet">
+                        <rect x="1" y="0" width="1" height="1"/>
+                        <rect x="0" y="1" width="1" height="1"/>
+                        <rect x="1" y="2" width="1" height="1"/>
+                    </svg>
+                    <span>Punk Security</span>
+                </button>
+                <div class="service-body">
+                    <p>Owning a Punk means protecting it. We walk you through every storage and purchase method, the pros and cons of each, so you can hold with confidence.</p>
+                </div>
+            </div>
+
         </section>
 
+        <!-- Contact -->
         <section class="contact-section" id="contact">
-            <h2 class="contact-heading">Contact Us</h2>
-            <p class="contact-sub">Ready to find your Punk? We're here.</p>
-            <a href="mailto:hello@punksierge.com" class="cta-btn">Get In Touch</a>
+            <div class="contact-row">
+                <svg viewBox="0 0 2 3" width="10" height="15" fill="#DE4097" class="bullet">
+                    <rect x="1" y="0" width="1" height="1"/>
+                    <rect x="0" y="1" width="1" height="1"/>
+                    <rect x="1" y="2" width="1" height="1"/>
+                </svg>
+                <span>Contact</span>
+            </div>
+            <div class="contact-body">
+                <p>Ready to find your Punk? We're here.</p>
+                <a href="mailto:hello@punksierge.com" class="cta-btn">Get In Touch</a>
+            </div>
         </section>
+
     </main>
+
+    <script>
+        // ── Marquee ──
+        const featured = [6058, 3355, 1021];
+        const rest = Array.from({length: 10000}, (_, i) => i).filter(i => !featured.includes(i));
+        for (let i = rest.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [rest[i], rest[j]] = [rest[j], rest[i]];
+        }
+        const pool = [...featured, ...rest.slice(0, 17)]; // 20 punks total
+
+        function punkUrl(id) {
+            return `https://www.larvalabs.com/public/images/cryptopunks/punk${String(id).padStart(4,'0')}.png`;
+        }
+
+        const track = document.getElementById('marquee-track');
+        // Double for seamless loop
+        [...pool, ...pool].forEach(id => {
+            const img = document.createElement('img');
+            img.src = punkUrl(id);
+            img.alt = `CryptoPunk #${id}`;
+            img.draggable = false;
+            track.appendChild(img);
+        });
+
+        // ── Services accordion ──
+        document.querySelectorAll('.service-item').forEach(item => {
+            item.querySelector('.service-header').addEventListener('click', function() {
+                const isOpen = item.classList.contains('open');
+                document.querySelectorAll('.service-item').forEach(i => {
+                    i.classList.remove('open');
+                    i.querySelector('.service-header').setAttribute('aria-expanded', 'false');
+                });
+                if (!isOpen) {
+                    item.classList.add('open');
+                    this.setAttribute('aria-expanded', 'true');
+                }
+            });
+        });
+    </script>
+
 </body>
 </html>
