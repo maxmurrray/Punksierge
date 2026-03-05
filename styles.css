@@ -112,6 +112,10 @@ nav a:hover { color: #fff; }
                 opacity 0.4s ease;
 }
 
+.punk-carousel img.no-transition {
+    transition: none !important;
+}
+
 .punk-carousel img[data-slot="left"]        { width:160px; height:160px; left:20px;   opacity:1; }
 .punk-carousel img[data-slot="center"]      { width:240px; height:240px; left:180px;  opacity:1; }
 .punk-carousel img[data-slot="right"]       { width:160px; height:160px; left:420px;  opacity:1; }

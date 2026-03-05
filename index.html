@@ -71,12 +71,13 @@
             let animating = false;
             let firstClick = false;
 
-            function makeImg(poolIdx, slot) {
+            function makeImg(poolIdx, slot, noTransition = false) {
                 const img = document.createElement('img');
                 img.src = punkUrl(pool[poolIdx]);
                 img.alt = `CryptoPunk #${pool[poolIdx]}`;
                 img.dataset.slot = slot;
                 img.style.imageRendering = 'pixelated';
+                if (noTransition) img.classList.add('no-transition');
                 return img;
             }
 
@@ -84,11 +85,18 @@
                 prevBtn.style.display = viewHead > 0 ? 'flex' : 'none';
             }
 
-            // Initial render
-            track.appendChild(makeImg(history[0], 'left'));
-            track.appendChild(makeImg(history[1], 'center'));
-            track.appendChild(makeImg(history[2], 'right'));
+            // Initial render — no-transition so CSS slot positions apply instantly (no slide-in on load)
+            const initImgs = [
+                makeImg(history[0], 'left',   true),
+                makeImg(history[1], 'center', true),
+                makeImg(history[2], 'right',  true),
+            ];
+            initImgs.forEach(img => track.appendChild(img));
             updateArrows();
+            // Re-enable transitions after the browser has painted the initial positions
+            requestAnimationFrame(() => requestAnimationFrame(() => {
+                initImgs.forEach(img => img.classList.remove('no-transition'));
+            }));
 
             // Go forward
             nextBtn.addEventListener('click', function() {
