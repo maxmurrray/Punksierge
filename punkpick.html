@@ -480,6 +480,13 @@
   }
 
   function pick(id, card) {
+    // Tap selected punk again → unselect
+    if (selected === id) {
+      document.querySelectorAll('.punk-card').forEach(c => c.classList.remove('selected', 'dimmed'));
+      selected = null;
+      document.getElementById('btnNext').classList.remove('visible');
+      return;
+    }
     document.querySelectorAll('.punk-card').forEach(c => {
       c.classList.remove('selected', 'dimmed');
       if (c !== card) c.classList.add('dimmed');
