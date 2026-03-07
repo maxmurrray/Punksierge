@@ -40,9 +40,7 @@
       text-transform: uppercase;
     }
 
-    .round-badge span {
-      color: #888;
-    }
+    .round-badge span { color: #888; }
 
     .lb-trigger {
       background: transparent;
@@ -63,18 +61,18 @@
     }
 
     .main {
-      max-width: 1160px;
+      max-width: 1200px;
       margin: 0 auto;
-      padding: 36px 24px 48px;
+      padding: 32px 24px 48px;
     }
 
     .prompt {
       text-align: center;
-      margin-bottom: 28px;
+      margin-bottom: 24px;
     }
 
     .prompt h1 {
-      font-size: 1.25rem;
+      font-size: 1.2rem;
       font-weight: 700;
       font-style: italic;
       letter-spacing: 0.06em;
@@ -83,77 +81,81 @@
     }
 
     .prompt p {
-      color: #3a3a3a;
-      font-size: 0.72rem;
-      letter-spacing: 0.08em;
+      color: #333;
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
     }
 
+    /* ── GRID ── */
     .punk-grid {
       display: grid;
       grid-template-columns: repeat(5, 1fr);
-      gap: 10px;
-      margin-bottom: 28px;
+      gap: 8px;
+      margin-bottom: 24px;
     }
 
     .punk-card {
-      background: #111;
-      border: 2px solid #181818;
+      /* Classic CryptoPunks blue-grey background */
+      background: #638596;
+      border: 3px solid transparent;
       cursor: pointer;
-      transition: border-color 0.12s, background 0.12s, transform 0.12s;
+      transition: border-color 0.12s, opacity 0.15s, transform 0.12s;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 14px 10px 10px;
+      padding: 8px 8px 6px;
       position: relative;
       user-select: none;
+      aspect-ratio: 1;
     }
 
     .punk-card:hover {
-      border-color: #2e2e2e;
-      background: #151515;
+      border-color: rgba(255,255,255,0.25);
       transform: translateY(-2px);
     }
 
     .punk-card.selected {
       border-color: #DE4097;
-      background: #160c12;
+      box-shadow: 0 0 0 1px #DE4097;
     }
 
     .punk-card.selected::after {
       content: '✓';
       position: absolute;
-      top: 7px;
-      right: 9px;
+      top: 5px;
+      right: 7px;
       color: #DE4097;
-      font-size: 0.7rem;
+      font-size: 0.75rem;
       font-weight: 700;
+      background: rgba(0,0,0,0.7);
+      border-radius: 0;
+      padding: 1px 3px;
+      line-height: 1;
     }
 
-    .punk-card.dimmed {
-      opacity: 0.3;
-    }
+    .punk-card.dimmed { opacity: 0.28; }
 
     .punk-img {
       width: 100%;
-      max-width: 96px;
+      max-width: 110px;
       image-rendering: pixelated;
       image-rendering: crisp-edges;
       display: block;
     }
 
     .punk-num {
-      font-size: 0.62rem;
-      color: #333;
-      margin-top: 8px;
-      letter-spacing: 0.05em;
+      font-size: 0.58rem;
+      color: rgba(0,0,0,0.45);
+      margin-top: 5px;
+      letter-spacing: 0.04em;
+      font-weight: 600;
     }
 
-    .punk-card.selected .punk-num {
-      color: #DE4097;
-    }
+    .punk-card.selected .punk-num { color: #DE4097; }
 
+    /* ── ACTIONS ── */
     .actions {
       display: flex;
       align-items: center;
@@ -177,11 +179,7 @@
       transition: opacity 0.2s;
     }
 
-    .btn-next.visible {
-      opacity: 1;
-      pointer-events: all;
-    }
-
+    .btn-next.visible { opacity: 1; pointer-events: all; }
     .btn-next:hover { opacity: 0.85; }
 
     .btn-skip {
@@ -197,17 +195,14 @@
       transition: all 0.2s;
     }
 
-    .btn-skip:hover {
-      border-color: #333;
-      color: #555;
-    }
+    .btn-skip:hover { border-color: #333; color: #555; }
 
     /* ── LEADERBOARD OVERLAY ── */
     .overlay {
       display: none;
       position: fixed;
       inset: 0;
-      background: rgba(0,0,0,0.92);
+      background: rgba(0,0,0,0.93);
       z-index: 200;
       overflow-y: auto;
     }
@@ -215,7 +210,7 @@
     .overlay.open { display: block; }
 
     .overlay-inner {
-      max-width: 560px;
+      max-width: 580px;
       margin: 0 auto;
       padding: 48px 24px;
     }
@@ -224,7 +219,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      margin-bottom: 32px;
+      margin-bottom: 28px;
     }
 
     .overlay-title {
@@ -233,6 +228,14 @@
       font-style: italic;
       letter-spacing: 0.1em;
       text-transform: uppercase;
+    }
+
+    .overlay-sub {
+      font-size: 0.65rem;
+      color: #333;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-top: 3px;
     }
 
     .overlay-close {
@@ -258,18 +261,26 @@
     }
 
     .lb-rank {
-      font-size: 0.7rem;
+      font-size: 0.68rem;
       color: #333;
-      width: 20px;
+      width: 22px;
       text-align: right;
       flex-shrink: 0;
     }
 
-    .lb-img {
-      width: 52px;
-      height: 52px;
-      image-rendering: pixelated;
+    .lb-img-wrap {
+      width: 56px;
+      height: 56px;
+      background: #638596;
       flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .lb-img {
+      width: 100%;
+      image-rendering: pixelated;
     }
 
     .lb-meta { flex: 1; }
@@ -281,7 +292,7 @@
     }
 
     .lb-count {
-      font-size: 0.65rem;
+      font-size: 0.62rem;
       color: #444;
       margin-top: 3px;
       letter-spacing: 0.04em;
@@ -297,14 +308,25 @@
     .lb-bar-fill {
       height: 100%;
       background: #DE4097;
+      transition: width 0.4s;
     }
 
     .lb-empty {
       text-align: center;
-      color: #333;
-      font-size: 0.8rem;
+      color: #2a2a2a;
+      font-size: 0.78rem;
       padding: 64px 0;
-      letter-spacing: 0.06em;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    /* loading spinner */
+    .lb-loading {
+      text-align: center;
+      color: #333;
+      font-size: 0.72rem;
+      padding: 48px 0;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
     }
 
@@ -318,18 +340,26 @@
       color: #fff;
       padding: 10px 24px;
       font-family: 'Chakra Petch', monospace;
-      font-size: 0.75rem;
+      font-size: 0.72rem;
+      font-weight: 700;
       letter-spacing: 0.1em;
       text-transform: uppercase;
       opacity: 0;
-      transition: all 0.3s;
+      transition: all 0.25s;
       pointer-events: none;
       z-index: 300;
     }
 
-    .toast.show {
-      opacity: 1;
-      transform: translateX(-50%) translateY(0);
+    .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+    @media (max-width: 700px) {
+      .punk-grid { grid-template-columns: repeat(4, 1fr); }
+      header { padding: 14px 16px; }
+      .main { padding: 20px 12px 40px; }
+    }
+
+    @media (max-width: 500px) {
+      .punk-grid { grid-template-columns: repeat(4, 1fr); gap: 5px; }
     }
   </style>
 </head>
@@ -355,14 +385,16 @@
   </div>
 </main>
 
-<!-- Leaderboard -->
 <div class="overlay" id="overlay">
   <div class="overlay-inner">
     <div class="overlay-hdr">
-      <div class="overlay-title">Most Liked Punks</div>
+      <div>
+        <div class="overlay-title">Most Liked Punks</div>
+        <div class="overlay-sub">Community rankings · all votes combined</div>
+      </div>
       <button class="overlay-close" onclick="closeLeaderboard()">✕</button>
     </div>
-    <ul class="lb-list" id="lbList"></ul>
+    <ul class="lb-list" id="lbList"><div class="lb-loading">Loading...</div></ul>
   </div>
 </div>
 
@@ -371,27 +403,20 @@
 <script>
   const TOTAL = 10000;
   const PER_ROUND = 20;
+  const API = '/api/likes';
+
   let round = 1;
   let selected = null;
 
+  // ── helpers ──
   function imgUrl(id) {
     return `https://www.larvalabs.com/public/images/cryptopunks/punk${String(id).padStart(4,'0')}.png`;
   }
 
   function randomPunks(n) {
-    const set = new Set();
-    while (set.size < n) set.add(Math.floor(Math.random() * TOTAL));
-    return [...set];
-  }
-
-  function getLikes() {
-    return JSON.parse(localStorage.getItem('pp_likes') || '{}');
-  }
-
-  function addLike(id) {
-    const l = getLikes();
-    l[id] = (l[id] || 0) + 1;
-    localStorage.setItem('pp_likes', JSON.stringify(l));
+    const s = new Set();
+    while (s.size < n) s.add(Math.floor(Math.random() * TOTAL));
+    return [...s];
   }
 
   function showToast(msg) {
@@ -401,6 +426,37 @@
     setTimeout(() => t.classList.remove('show'), 1800);
   }
 
+  // ── shared likes API (falls back to localStorage) ──
+  async function fetchLikes() {
+    try {
+      const r = await fetch(API);
+      if (!r.ok) throw new Error('api error');
+      const d = await r.json();
+      return d.likes || {};
+    } catch {
+      return JSON.parse(localStorage.getItem('pp_likes') || '{}');
+    }
+  }
+
+  async function submitLike(id) {
+    // Optimistic local save
+    const local = JSON.parse(localStorage.getItem('pp_likes') || '{}');
+    local[String(id)] = (local[String(id)] || 0) + 1;
+    localStorage.setItem('pp_likes', JSON.stringify(local));
+
+    // Send to shared API
+    try {
+      await fetch(API, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ id }),
+      });
+    } catch {
+      // silently continue — local save already done
+    }
+  }
+
+  // ── grid ──
   function renderGrid() {
     selected = null;
     document.getElementById('btnNext').classList.remove('visible');
@@ -434,17 +490,21 @@
     document.getElementById('btnNext').classList.add('visible');
   }
 
-  function nextRound(save) {
+  async function nextRound(save) {
     if (save && selected !== null) {
-      addLike(selected);
+      submitLike(selected);
       showToast(`Punk #${selected} liked ❤`);
     }
     round++;
     renderGrid();
   }
 
-  function openLeaderboard() {
-    const likes = getLikes();
+  // ── leaderboard ──
+  async function openLeaderboard() {
+    document.getElementById('overlay').classList.add('open');
+    document.getElementById('lbList').innerHTML = '<div class="lb-loading">Loading community rankings...</div>';
+
+    const likes = await fetchLikes();
     const sorted = Object.entries(likes).sort((a,b)=>b[1]-a[1]).slice(0,25);
     const list = document.getElementById('lbList');
 
@@ -452,20 +512,22 @@
       list.innerHTML = '<div class="lb-empty">No likes yet — start picking</div>';
     } else {
       const max = sorted[0][1];
-      list.innerHTML = sorted.map(([id,ct],i) => `
+      list.innerHTML = sorted.map(([id, ct], i) => `
         <li class="lb-row">
           <div class="lb-rank">${i+1}</div>
-          <img class="lb-img" src="${imgUrl(id)}" alt="Punk #${id}">
+          <div class="lb-img-wrap">
+            <img class="lb-img" src="${imgUrl(id)}" alt="Punk #${id}">
+          </div>
           <div class="lb-meta">
             <div class="lb-name">Punk #${id}</div>
             <div class="lb-count">${ct} like${ct!==1?'s':''}</div>
           </div>
-          <div class="lb-bar-bg"><div class="lb-bar-fill" style="width:${Math.round((ct/max)*100)}%"></div></div>
+          <div class="lb-bar-bg">
+            <div class="lb-bar-fill" style="width:${Math.round((ct/max)*100)}%"></div>
+          </div>
         </li>
       `).join('');
     }
-
-    document.getElementById('overlay').classList.add('open');
   }
 
   function closeLeaderboard() {
