@@ -406,7 +406,7 @@
   const API = '/api/likes';
 
   let round = 1;
-  let selected = null;
+  let selected = null; // always stored as String or null
 
   // ── helpers ──
   function imgUrl(id) {
@@ -480,20 +480,22 @@
   }
 
   function pick(id, card) {
+    const sid = String(id);
     // Tap selected punk again → unselect
-    if (selected === id) {
+    if (selected === sid) {
       document.querySelectorAll('.punk-card').forEach(c => c.classList.remove('selected', 'dimmed'));
       selected = null;
       document.getElementById('btnNext').classList.remove('visible');
       return;
     }
+    // Select this punk
     document.querySelectorAll('.punk-card').forEach(c => {
       c.classList.remove('selected', 'dimmed');
       if (c !== card) c.classList.add('dimmed');
     });
     card.classList.add('selected');
     card.classList.remove('dimmed');
-    selected = id;
+    selected = sid;
     document.getElementById('btnNext').classList.add('visible');
   }
 
