@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Generative Art</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: #0a0a0a; display: flex; align-items: center; justify-content: center; min-height: 100vh; flex-direction: column; gap: 20px; }
+    canvas { display: block; }
+    .controls { display: flex; gap: 12px; }
+    button {
+      background: transparent;
+      border: 1px solid #333;
+      color: #888;
+      padding: 8px 20px;
+      font-family: monospace;
+      font-size: 12px;
+      letter-spacing: 0.1em;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-transform: uppercase;
+    }
+    button:hover { border-color: #fff; color: #fff; }
+  </style>
+</head>
+<body>
+<canvas id="c"></canvas>
+<div class="controls">
+  <button onclick="generate()">New ↺</button>
+  <button onclick="nextPalette()">Palette ◈</button>
+  <button onclick="saveImg()">Save ↓</button>
+</div>
+
+<script>
+// ── CONFIG ────────────────────────────────────────────────
+const SIZE     = 700;
+const SCALE    = 14;       // flow field grid size
+const STEPS    = 220;      // how far each strand travels
+const STRANDS  = 900;      // number of strands
+const THICK    = 2.8;      // stroke weight
+const NOISE_SC = 0.0042;   // noise scale — lower = smoother
+const SPEED    = 1.9;      // how fast strands move
+
+// ── PALETTES ─────────────────────────────────────────────
+const PALETTES = [
+  { name: 'Obsidian', bg: '#080808', colors: ['#E8C547','#E87C47','#E84747','#C547E8','#4798E8'] },
+  { name: 'Ice Shelf', bg: '#06111a', colors: ['#A8D8EA','#E0F4FC','#B7D3E8','#7EB8D4','#D4EEF7'] },
+  { name: 'Wildfire',  bg: '#0d0300', colors: ['#FF4500','#FF8C00','#FFD700','#FF6347','#FF2400'] },
+  { name: 'Sage',      bg: '#060d08', colors: ['#8DB596','#BEDBBB','#C9F299','#7AAD7F','#A8C5A0'] },
+  { name: 'Vapor',     bg: '#0d0717', colors: ['#FF6EC7','#B39DDB','#80DEEA','#CE93D8','#F48FB1'] },
+  { name: 'Rust',      bg: '#0c0803', colors: ['#BF4F00','#D4724A','#E8A87C','#F0C9A0','#C87941'] },
+  { name: 'Bone',      bg: '#f5f0e8', colors: ['#1a1208','#2d1f0e','#3d2b14','#4a3520','#6b4c2a'] },
+];
+
+let palIdx = 0;
+let seed   = Math.random() * 99999 | 0;
+
+// ── NOISE (simple 2D Perlin) ───────────────────────────────
+// Ken Perlin's improved noise
+const permutation = [];
+for(let i=0;i<256;i++) permutation[i]=i;
+for(let i=255;i>0;i--){const j=Math.random()*i|0;[permutation[i],permutation[j]]=[permutation[j],permutation[i]];}
+const p=[...permutation,...permutation];
+function fade(t){return t*t*t*(t*(t*6-15)+10);}
+function lerp(a,b,t){return a+(b-a)*t;}
+function grad(hash,x,y){const h=hash&3;const u=h<2?x:y;const v=h<2?y:x;return((h&1)?-u:u)+((h&2)?-v:v);}
+function noise2(x,y){
+  const X=Math.floor(x)&255, Y=Math.floor(y)&255;
+  x-=Math.floor(x); y-=Math.floor(y);
+  const u=fade(x),v=fade(y);
+  const a=p[X]+Y,b=p[X+1]+Y;
+  return lerp(lerp(grad(p[a],x,y),grad(p[b],x-1,y),u),
+              lerp(grad(p[a+1],x,y-1),grad(p[b+1],x-1,y-1),u),v);
+}
+
+// ── SEEDED RANDOM ──────────────────────────────────────────
+let _seed;
+function srnd(){_seed=(_seed*1664525+1013904223)&0xffffffff;return(_seed>>>0)/0xffffffff;}
+function srndRange(a,b){return a+srnd()*(b-a);}
+function srndInt(a,b){return Math.floor(srndRange(a,b+1));}
+function srndPick(arr){return arr[srndInt(0,arr.length-1)];}
+
+// ── DRAW ───────────────────────────────────────────────────
+const cv = document.getElementById('c');
+const ctx = cv.getContext('2d');
+cv.width = cv.height = SIZE;
+
+function generate() {
+  seed = Math.random() * 99999 | 0;
+  draw();
+}
+
+function nextPalette() {
+  palIdx = (palIdx + 1) % PALETTES.length;
+  draw();
+}
+
+function saveImg() {
+  const a = document.createElement('a');
+  a.download = `genart-${seed}.png`;
+  a.href = cv.toDataURL();
+  a.click();
+}
+
+function hexToRgb(hex) {
+  const r = parseInt(hex.slice(1,3),16);
+  const g = parseInt(hex.slice(3,5),16);
+  const b = parseInt(hex.slice(5,7),16);
+  return [r,g,b];
+}
+
+function draw() {
+  _seed = seed;
+  const pal = PALETTES[palIdx];
+  const [br,bg_,bb] = hexToRgb(pal.bg);
+
+  // Background
+  ctx.fillStyle = pal.bg;
+  ctx.fillRect(0, 0, SIZE, SIZE);
+
+  // Subtle vignette
+  const vig = ctx.createRadialGradient(SIZE/2,SIZE/2,SIZE*0.28,SIZE/2,SIZE/2,SIZE*0.72);
+  vig.addColorStop(0,'rgba(0,0,0,0)');
+  vig.addColorStop(1,`rgba(${br},${bg_},${bb},0.55)`);
+  ctx.fillStyle = vig;
+  ctx.fillRect(0,0,SIZE,SIZE);
+
+  // Noise offset varies per seed
+  const ox = srnd() * 999;
+  const oy = srnd() * 999;
+
+  // Build flow field
+  const cols = Math.ceil(SIZE/SCALE)+2;
+  const rows = Math.ceil(SIZE/SCALE)+2;
+  const field = new Float32Array(cols*rows);
+  for(let c=0;c<cols;c++){
+    for(let r=0;r<rows;r++){
+      const nx = c*NOISE_SC + ox;
+      const ny = r*NOISE_SC + oy;
+      // Layered octaves for complexity
+      const angle = (noise2(nx,ny)*0.65 + noise2(nx*2.1,ny*2.1)*0.25 + noise2(nx*4.3,ny*4.3)*0.1) * Math.PI * 4;
+      field[c+r*cols] = angle;
+    }
+  }
+
+  // Random margin — strands spawn in a slightly inset area
+  const margin = SIZE * 0.06;
+
+  // Draw strands
+  for(let i=0; i<STRANDS; i++){
+    let x = srndRange(margin, SIZE-margin);
+    let y = srndRange(margin, SIZE-margin);
+    const col = srndPick(pal.colors);
+    const [cr,cg,cb] = hexToRgb(col);
+    const alpha = srndRange(0.35, 0.82);
+    const strokeW = srndRange(THICK*0.6, THICK*1.6);
+    const steps = srndInt(STEPS*0.4, STEPS*1.3);
+    const speed = srndRange(SPEED*0.7, SPEED*1.4);
+
+    // Occasionally very thin hairlines
+    const hairline = srnd() < 0.08;
+
+    ctx.beginPath();
+    ctx.moveTo(x, y);
+
+    for(let s=0; s<steps; s++){
+      const c_ = Math.floor(x/SCALE);
+      const r_ = Math.floor(y/SCALE);
+      if(c_<0||c_>=cols||r_<0||r_>=rows) break;
+      const angle = field[c_+r_*cols];
+      x += Math.cos(angle) * speed;
+      y += Math.sin(angle) * speed;
+      if(x<0||x>SIZE||y<0||y>SIZE) break;
+      ctx.lineTo(x, y);
+    }
+
+    ctx.strokeStyle = `rgba(${cr},${cg},${cb},${alpha})`;
+    ctx.lineWidth = hairline ? 0.4 : strokeW;
+    ctx.lineCap = 'round';
+    ctx.lineJoin = 'round';
+    ctx.stroke();
+  }
+
+  // Second vignette pass (deepen edges)
+  const vig2 = ctx.createRadialGradient(SIZE/2,SIZE/2,SIZE*0.3,SIZE/2,SIZE/2,SIZE*0.78);
+  vig2.addColorStop(0,'rgba(0,0,0,0)');
+  vig2.addColorStop(1,`rgba(${br},${bg_},${bb},0.4)`);
+  ctx.fillStyle = vig2;
+  ctx.fillRect(0,0,SIZE,SIZE);
+
+  // Seed label
+  ctx.font = '10px monospace';
+  ctx.fillStyle = 'rgba(255,255,255,0.18)';
+  ctx.fillText(`#${seed} · ${pal.name}`, 14, SIZE-12);
+}
+
+draw();
+</script>
+</body>
+</html>
