@@ -55,10 +55,7 @@
       transition: all 0.2s;
     }
 
-    .lb-trigger:hover {
-      border-color: #DE4097;
-      color: #DE4097;
-    }
+    .lb-trigger:hover { border-color: #DE4097; color: #DE4097; }
 
     .main {
       max-width: 1200px;
@@ -96,7 +93,6 @@
     }
 
     .punk-card {
-      /* Classic CryptoPunks blue-grey background */
       background: #638596;
       border: 3px solid transparent;
       cursor: pointer;
@@ -109,12 +105,10 @@
       position: relative;
       user-select: none;
       aspect-ratio: 1;
+      -webkit-tap-highlight-color: transparent;
     }
 
-    .punk-card:hover {
-      border-color: rgba(255,255,255,0.25);
-      transform: translateY(-2px);
-    }
+    .punk-card:hover { border-color: rgba(255,255,255,0.25); transform: translateY(-2px); }
 
     .punk-card.selected {
       border-color: #DE4097;
@@ -126,12 +120,11 @@
       position: absolute;
       top: 5px;
       right: 7px;
-      color: #DE4097;
+      color: #fff;
       font-size: 0.75rem;
       font-weight: 700;
-      background: rgba(0,0,0,0.7);
-      border-radius: 0;
-      padding: 1px 3px;
+      background: #DE4097;
+      padding: 1px 4px;
       line-height: 1;
     }
 
@@ -161,33 +154,31 @@
       align-items: center;
       justify-content: center;
       gap: 10px;
+      min-height: 48px;
     }
 
     .btn-next {
       background: #DE4097;
       color: #fff;
       border: none;
-      padding: 13px 44px;
-      font-family: inherit;
-      font-size: 0.78rem;
+      padding: 14px 48px;
+      font-family: 'Chakra Petch', monospace;
+      font-size: 0.82rem;
       font-weight: 700;
       letter-spacing: 0.12em;
       text-transform: uppercase;
       cursor: pointer;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.2s;
+      display: none;
     }
 
-    .btn-next.visible { opacity: 1; pointer-events: all; }
-    .btn-next:hover { opacity: 0.85; }
+    .btn-next:active { opacity: 0.8; }
 
     .btn-skip {
       background: transparent;
       border: 1px solid #1e1e1e;
       color: #333;
-      padding: 13px 28px;
-      font-family: inherit;
+      padding: 14px 28px;
+      font-family: 'Chakra Petch', monospace;
       font-size: 0.7rem;
       letter-spacing: 0.1em;
       text-transform: uppercase;
@@ -244,7 +235,6 @@
       color: #444;
       font-size: 1.3rem;
       cursor: pointer;
-      line-height: 1;
       font-family: inherit;
     }
 
@@ -260,13 +250,7 @@
       border-bottom: 1px solid #141414;
     }
 
-    .lb-rank {
-      font-size: 0.68rem;
-      color: #333;
-      width: 22px;
-      text-align: right;
-      flex-shrink: 0;
-    }
+    .lb-rank { font-size: 0.68rem; color: #333; width: 22px; text-align: right; flex-shrink: 0; }
 
     .lb-img-wrap {
       width: 56px;
@@ -278,59 +262,19 @@
       justify-content: center;
     }
 
-    .lb-img {
-      width: 100%;
-      image-rendering: pixelated;
-    }
+    .lb-img { width: 100%; image-rendering: pixelated; }
 
     .lb-meta { flex: 1; }
+    .lb-name { font-size: 0.82rem; font-weight: 600; letter-spacing: 0.04em; }
+    .lb-count { font-size: 0.62rem; color: #444; margin-top: 3px; }
 
-    .lb-name {
-      font-size: 0.82rem;
-      font-weight: 600;
-      letter-spacing: 0.04em;
-    }
+    .lb-bar-bg { width: 80px; height: 2px; background: #1a1a1a; flex-shrink: 0; }
+    .lb-bar-fill { height: 100%; background: #DE4097; }
 
-    .lb-count {
-      font-size: 0.62rem;
-      color: #444;
-      margin-top: 3px;
-      letter-spacing: 0.04em;
-    }
+    .lb-empty { text-align: center; color: #2a2a2a; font-size: 0.78rem; padding: 64px 0; letter-spacing: 0.08em; text-transform: uppercase; }
+    .lb-loading { text-align: center; color: #333; font-size: 0.72rem; padding: 48px 0; letter-spacing: 0.1em; text-transform: uppercase; }
 
-    .lb-bar-bg {
-      width: 80px;
-      height: 2px;
-      background: #1a1a1a;
-      flex-shrink: 0;
-    }
-
-    .lb-bar-fill {
-      height: 100%;
-      background: #DE4097;
-      transition: width 0.4s;
-    }
-
-    .lb-empty {
-      text-align: center;
-      color: #2a2a2a;
-      font-size: 0.78rem;
-      padding: 64px 0;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-
-    /* loading spinner */
-    .lb-loading {
-      text-align: center;
-      color: #333;
-      font-size: 0.72rem;
-      padding: 48px 0;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-    }
-
-    /* toast */
+    /* ── TOAST ── */
     .toast {
       position: fixed;
       bottom: 32px;
@@ -349,7 +293,6 @@
       pointer-events: none;
       z-index: 300;
     }
-
     .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
 
     @media (max-width: 700px) {
@@ -357,7 +300,6 @@
       header { padding: 14px 16px; }
       .main { padding: 20px 12px 40px; }
     }
-
     @media (max-width: 500px) {
       .punk-grid { grid-template-columns: repeat(4, 1fr); gap: 5px; }
     }
@@ -368,7 +310,7 @@
 <header>
   <div class="logo">PunkPick</div>
   <div class="round-badge">Round <span id="roundNum">1</span></div>
-  <button class="lb-trigger" onclick="openLeaderboard()">🏆 Leaderboard</button>
+  <button class="lb-trigger" id="lbBtn">🏆 Leaderboard</button>
 </header>
 
 <main class="main">
@@ -376,15 +318,14 @@
     <h1>Pick Your Favorite Punk</h1>
     <p>Choose one · the community is watching</p>
   </div>
-
   <div class="punk-grid" id="punkGrid"></div>
-
   <div class="actions">
-    <button class="btn-skip" onclick="nextRound(false)">Skip →</button>
-    <button class="btn-next" id="btnNext" onclick="nextRound(true)">Lock It In →</button>
+    <button class="btn-skip" id="skipBtn">Skip →</button>
+    <button class="btn-next" id="btnNext">Lock It In →</button>
   </div>
 </main>
 
+<!-- Leaderboard -->
 <div class="overlay" id="overlay">
   <div class="overlay-inner">
     <div class="overlay-hdr">
@@ -392,151 +333,186 @@
         <div class="overlay-title">Most Liked Punks</div>
         <div class="overlay-sub">Community rankings · all votes combined</div>
       </div>
-      <button class="overlay-close" onclick="closeLeaderboard()">✕</button>
+      <button class="overlay-close" id="closeBtn">✕</button>
     </div>
-    <ul class="lb-list" id="lbList"><div class="lb-loading">Loading...</div></ul>
+    <ul class="lb-list" id="lbList"></ul>
   </div>
 </div>
 
 <div class="toast" id="toast"></div>
 
 <script>
-  const TOTAL = 10000;
-  const PER_ROUND = 20;
-  const API = '/api/likes';
+  var TOTAL = 10000;
+  var PER_ROUND = 20;
+  var API = '/api/likes';
+  var round = 1;
+  var selected = null;
 
-  let round = 1;
-  let selected = null; // always stored as String or null
+  // wire up buttons via JS — no onclick in HTML
+  document.getElementById('btnNext').addEventListener('click', function() { nextRound(true); });
+  document.getElementById('skipBtn').addEventListener('click', function() { nextRound(false); });
+  document.getElementById('lbBtn').addEventListener('click', openLeaderboard);
+  document.getElementById('closeBtn').addEventListener('click', closeLeaderboard);
 
-  // ── helpers ──
   function imgUrl(id) {
-    return `https://www.larvalabs.com/public/images/cryptopunks/punk${String(id).padStart(4,'0')}.png`;
+    var s = String(id);
+    while (s.length < 4) s = '0' + s;
+    return 'https://www.larvalabs.com/public/images/cryptopunks/punk' + s + '.png';
   }
 
   function randomPunks(n) {
-    const s = new Set();
-    while (s.size < n) s.add(Math.floor(Math.random() * TOTAL));
-    return [...s];
+    var s = [];
+    var seen = {};
+    while (s.length < n) {
+      var r = Math.floor(Math.random() * TOTAL);
+      if (!seen[r]) { seen[r] = true; s.push(r); }
+    }
+    return s;
   }
 
   function showToast(msg) {
-    const t = document.getElementById('toast');
+    var t = document.getElementById('toast');
     t.textContent = msg;
     t.classList.add('show');
-    setTimeout(() => t.classList.remove('show'), 1800);
+    setTimeout(function() { t.classList.remove('show'); }, 1800);
   }
 
-  // ── shared likes API (falls back to localStorage) ──
-  async function fetchLikes() {
-    try {
-      const r = await fetch(API);
-      if (!r.ok) throw new Error('api error');
-      const d = await r.json();
-      return d.likes || {};
-    } catch {
-      return JSON.parse(localStorage.getItem('pp_likes') || '{}');
-    }
+  function showLockBtn() {
+    document.getElementById('btnNext').style.display = 'inline-block';
   }
 
-  async function submitLike(id) {
-    // Optimistic local save
-    const local = JSON.parse(localStorage.getItem('pp_likes') || '{}');
-    local[String(id)] = (local[String(id)] || 0) + 1;
-    localStorage.setItem('pp_likes', JSON.stringify(local));
-
-    // Send to shared API
-    try {
-      await fetch(API, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ id }),
-      });
-    } catch {
-      // silently continue — local save already done
-    }
+  function hideLockBtn() {
+    document.getElementById('btnNext').style.display = 'none';
   }
 
-  // ── grid ──
   function renderGrid() {
     selected = null;
-    document.getElementById('btnNext').classList.remove('visible');
+    hideLockBtn();
     document.getElementById('roundNum').textContent = round;
 
-    const ids = randomPunks(PER_ROUND);
-    const grid = document.getElementById('punkGrid');
+    var ids = randomPunks(PER_ROUND);
+    var grid = document.getElementById('punkGrid');
     grid.innerHTML = '';
 
-    ids.forEach(id => {
-      const card = document.createElement('div');
-      card.className = 'punk-card';
-      card.dataset.id = id;
-      card.innerHTML = `
-        <img class="punk-img" src="${imgUrl(id)}" alt="Punk #${id}" loading="lazy">
-        <div class="punk-num">#${id}</div>
-      `;
-      card.addEventListener('click', () => pick(id, card));
-      grid.appendChild(card);
-    });
+    for (var i = 0; i < ids.length; i++) {
+      (function(id) {
+        var card = document.createElement('div');
+        card.className = 'punk-card';
+
+        var img = document.createElement('img');
+        img.className = 'punk-img';
+        img.src = imgUrl(id);
+        img.alt = 'Punk #' + id;
+        img.loading = 'lazy';
+
+        var num = document.createElement('div');
+        num.className = 'punk-num';
+        num.textContent = '#' + id;
+
+        card.appendChild(img);
+        card.appendChild(num);
+
+        card.addEventListener('click', function() { pick(id, card); });
+        grid.appendChild(card);
+      })(ids[i]);
+    }
   }
 
   function pick(id, card) {
-    const sid = String(id);
-    // Tap selected punk again → unselect
+    var sid = String(id);
+
+    // tap selected punk again → deselect
     if (selected === sid) {
-      document.querySelectorAll('.punk-card').forEach(c => c.classList.remove('selected', 'dimmed'));
+      var all = document.querySelectorAll('.punk-card');
+      for (var i = 0; i < all.length; i++) {
+        all[i].classList.remove('selected', 'dimmed');
+      }
       selected = null;
-      document.getElementById('btnNext').classList.remove('visible');
+      hideLockBtn();
       return;
     }
-    // Select this punk
-    document.querySelectorAll('.punk-card').forEach(c => {
-      c.classList.remove('selected', 'dimmed');
-      if (c !== card) c.classList.add('dimmed');
-    });
+
+    // select this punk
+    var cards = document.querySelectorAll('.punk-card');
+    for (var j = 0; j < cards.length; j++) {
+      cards[j].classList.remove('selected', 'dimmed');
+      if (cards[j] !== card) cards[j].classList.add('dimmed');
+    }
     card.classList.add('selected');
     card.classList.remove('dimmed');
     selected = sid;
-    document.getElementById('btnNext').classList.add('visible');
+    showLockBtn();
   }
 
-  async function nextRound(save) {
+  function nextRound(save) {
     if (save && selected !== null) {
       submitLike(selected);
-      showToast(`Punk #${selected} liked ❤`);
+      showToast('Punk #' + selected + ' liked \u2764');
     }
     round++;
     renderGrid();
   }
 
-  // ── leaderboard ──
-  async function openLeaderboard() {
+  function submitLike(id) {
+    // local save
+    try {
+      var local = JSON.parse(localStorage.getItem('pp_likes') || '{}');
+      local[String(id)] = (local[String(id)] || 0) + 1;
+      localStorage.setItem('pp_likes', JSON.stringify(local));
+    } catch(e) {}
+
+    // shared API
+    fetch(API, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ id: id })
+    }).catch(function() {});
+  }
+
+  function fetchLikes(cb) {
+    fetch(API)
+      .then(function(r) { return r.json(); })
+      .then(function(d) { cb(d.likes || {}); })
+      .catch(function() {
+        try { cb(JSON.parse(localStorage.getItem('pp_likes') || '{}')); }
+        catch(e) { cb({}); }
+      });
+  }
+
+  function openLeaderboard() {
     document.getElementById('overlay').classList.add('open');
     document.getElementById('lbList').innerHTML = '<div class="lb-loading">Loading community rankings...</div>';
 
-    const likes = await fetchLikes();
-    const sorted = Object.entries(likes).sort((a,b)=>b[1]-a[1]).slice(0,25);
-    const list = document.getElementById('lbList');
+    fetchLikes(function(likes) {
+      var entries = [];
+      for (var k in likes) { if (likes.hasOwnProperty(k)) entries.push([k, likes[k]]); }
+      entries.sort(function(a, b) { return b[1] - a[1]; });
+      entries = entries.slice(0, 25);
 
-    if (!sorted.length) {
-      list.innerHTML = '<div class="lb-empty">No likes yet — start picking</div>';
-    } else {
-      const max = sorted[0][1];
-      list.innerHTML = sorted.map(([id, ct], i) => `
-        <li class="lb-row">
-          <div class="lb-rank">${i+1}</div>
-          <div class="lb-img-wrap">
-            <img class="lb-img" src="${imgUrl(id)}" alt="Punk #${id}">
-          </div>
-          <div class="lb-meta">
-            <div class="lb-name">Punk #${id}</div>
-            <div class="lb-count">${ct} like${ct!==1?'s':''}</div>
-          </div>
-          <div class="lb-bar-bg">
-            <div class="lb-bar-fill" style="width:${Math.round((ct/max)*100)}%"></div>
-          </div>
-        </li>
-      `).join('');
-    }
+      var list = document.getElementById('lbList');
+      if (!entries.length) {
+        list.innerHTML = '<div class="lb-empty">No likes yet — start picking</div>';
+        return;
+      }
+
+      var max = entries[0][1];
+      var html = '';
+      for (var i = 0; i < entries.length; i++) {
+        var id = entries[i][0];
+        var ct = entries[i][1];
+        var pct = Math.round((ct / max) * 100);
+        html += '<li class="lb-row">' +
+          '<div class="lb-rank">' + (i+1) + '</div>' +
+          '<div class="lb-img-wrap"><img class="lb-img" src="' + imgUrl(id) + '" alt="Punk #' + id + '"></div>' +
+          '<div class="lb-meta">' +
+            '<div class="lb-name">Punk #' + id + '</div>' +
+            '<div class="lb-count">' + ct + ' like' + (ct !== 1 ? 's' : '') + '</div>' +
+          '</div>' +
+          '<div class="lb-bar-bg"><div class="lb-bar-fill" style="width:' + pct + '%"></div></div>' +
+        '</li>';
+      }
+      list.innerHTML = html;
+    });
   }
 
   function closeLeaderboard() {
