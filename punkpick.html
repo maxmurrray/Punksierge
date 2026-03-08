@@ -116,7 +116,10 @@
       user-select: none;
       aspect-ratio: 1;
       -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation;
     }
+
+    .punk-img { pointer-events: none; }
 
     .punk-card:hover { border-color: rgba(255,255,255,0.25); transform: translateY(-2px); }
 
@@ -180,11 +183,14 @@
       cursor: pointer;
       opacity: 0.25;
       transition: opacity 0.2s;
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: transparent;
+      user-select: none;
     }
 
-    .btn-next:not([disabled]) { opacity: 1; }
+    .btn-next:not([disabled]) { opacity: 1; cursor: pointer; }
     .btn-next:not([disabled]):active { opacity: 0.75; }
-    .btn-next[disabled] { cursor: default; }
+    .btn-next[disabled] { cursor: default; pointer-events: none; }
 
     .btn-skip {
       background: transparent;
@@ -197,6 +203,8 @@
       text-transform: uppercase;
       cursor: pointer;
       transition: all 0.2s;
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: transparent;
     }
 
     .btn-skip:hover { border-color: #333; color: #555; }
@@ -364,11 +372,17 @@
   var round = 1;
   var selected = null;
 
-  // wire up buttons via JS — no onclick in HTML
-  document.getElementById('btnNext').addEventListener('click', function() { nextRound(true); });
-  document.getElementById('skipBtn').addEventListener('click', function() { nextRound(false); });
-  document.getElementById('lbBtn').addEventListener('click', openLeaderboard);
-  document.getElementById('closeBtn').addEventListener('click', closeLeaderboard);
+  // wire up buttons — both click AND touchend for mobile reliability
+  function addTap(id, fn) {
+    var el = document.getElementById(id);
+    el.addEventListener('click', fn);
+    el.addEventListener('touchend', function(e) { e.preventDefault(); fn(); });
+  }
+
+  addTap('btnNext', function() { nextRound(true); });
+  addTap('skipBtn', function() { nextRound(false); });
+  addTap('lbBtn', openLeaderboard);
+  addTap('closeBtn', closeLeaderboard);
 
   function imgUrl(id) {
     var s = String(id);
@@ -429,6 +443,7 @@
         card.appendChild(num);
 
         card.addEventListener('click', function() { pick(id, card); });
+        card.addEventListener('touchend', function(e) { e.preventDefault(); e.stopPropagation(); pick(id, card); });
         grid.appendChild(card);
       })(ids[i]);
     }
