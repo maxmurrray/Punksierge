@@ -2,12 +2,17 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>PunkPick — Pick Your Punk</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,400;0,600;0,700;1,700&display=swap" rel="stylesheet">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html, body {
+      overflow-x: hidden;
+      width: 100%;
+    }
 
     body {
       background: #0a0a0a;
@@ -17,11 +22,12 @@
     }
 
     header {
-      padding: 18px 40px;
+      padding: 14px 16px;
       border-bottom: 1px solid #1c1c1c;
       display: flex;
       align-items: center;
       justify-content: space-between;
+      width: 100%;
     }
 
     .logo {
@@ -59,8 +65,9 @@
 
     .main {
       max-width: 1200px;
+      width: 100%;
       margin: 0 auto;
-      padding: 32px 24px 48px;
+      padding: 24px 16px 48px;
     }
 
     .prompt {
@@ -296,12 +303,15 @@
     .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
 
     @media (max-width: 700px) {
-      .punk-grid { grid-template-columns: repeat(4, 1fr); }
-      header { padding: 14px 16px; }
-      .main { padding: 20px 12px 40px; }
+      .punk-grid { grid-template-columns: repeat(4, 1fr); gap: 6px; }
+      .main { padding: 20px 14px 40px; }
     }
-    @media (max-width: 500px) {
+    @media (max-width: 480px) {
       .punk-grid { grid-template-columns: repeat(4, 1fr); gap: 5px; }
+      .main { padding: 16px 12px 36px; }
+      /* Shrink leaderboard button to icon-only on tiny screens */
+      .lb-trigger { padding: 8px 10px; font-size: 0.65rem; letter-spacing: 0; }
+      .lb-trigger .lb-label { display: none; }
     }
   </style>
 </head>
@@ -310,7 +320,7 @@
 <header>
   <div class="logo">PunkPick</div>
   <div class="round-badge">Round <span id="roundNum">1</span></div>
-  <button class="lb-trigger" id="lbBtn">🏆 Leaderboard</button>
+  <button class="lb-trigger" id="lbBtn">🏆<span class="lb-label"> Leaderboard</span></button>
 </header>
 
 <main class="main">
