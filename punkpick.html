@@ -9,7 +9,10 @@
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
-    html, body {
+    html {
+      width: 100%;
+    }
+    body {
       overflow-x: hidden;
       width: 100%;
     }
@@ -175,10 +178,13 @@
       letter-spacing: 0.12em;
       text-transform: uppercase;
       cursor: pointer;
-      display: none;
+      opacity: 0.25;
+      transition: opacity 0.2s;
     }
 
-    .btn-next:active { opacity: 0.8; }
+    .btn-next:not([disabled]) { opacity: 1; }
+    .btn-next:not([disabled]):active { opacity: 0.75; }
+    .btn-next[disabled] { cursor: default; }
 
     .btn-skip {
       background: transparent;
@@ -331,7 +337,7 @@
   <div class="punk-grid" id="punkGrid"></div>
   <div class="actions">
     <button class="btn-skip" id="skipBtn">Skip →</button>
-    <button class="btn-next" id="btnNext">Lock It In →</button>
+    <button class="btn-next" id="btnNext" disabled>Lock It In →</button>
   </div>
 </main>
 
@@ -388,11 +394,11 @@
   }
 
   function showLockBtn() {
-    document.getElementById('btnNext').style.display = 'inline-block';
+    document.getElementById('btnNext').removeAttribute('disabled');
   }
 
   function hideLockBtn() {
-    document.getElementById('btnNext').style.display = 'none';
+    document.getElementById('btnNext').setAttribute('disabled', 'disabled');
   }
 
   function renderGrid() {
